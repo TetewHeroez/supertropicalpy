@@ -5,7 +5,7 @@ name: Build and Deploy Docs
 on:
   push:
     branches:
-      - main  # Only run on push to main 
+      - main # Only run on push to main
 
 # Permissions required for the action to write to the gh-pages branch
 permissions:
@@ -21,7 +21,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
       - name: Install Documentation Dependencies
         run: |

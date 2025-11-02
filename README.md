@@ -1,28 +1,18 @@
 # Supertropical Algebra# Supertropical Algebra=======================
 
-
-
 [![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)Supertropical Algebra
 
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/YOUR_USERNAME/supertropical-algebra/main?filepath=docs/source/examples/tutorial.ipynb)[![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)=======================
 
-
-
 A comprehensive Python package for **supertropical algebra**, featuring tangible and ghost elements, matrix operations, and linear system solving using Cramer's rule.[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-
-
 
 > **🚀 Try it now!** Click the Binder badge above to run the interactive tutorial in your browser without installing anything... image:: https://img.shields.io/badge/python-3.8+-blue.svg
 
+## ✨ FeaturesA comprehensive Python package for **supertropical algebra**, featuring tangible and ghost elements, matrix operations, and linear system solving using Cramer's rule. :target: https://www.python.org/downloads/
 
-
-## ✨ FeaturesA comprehensive Python package for **supertropical algebra**, featuring tangible and ghost elements, matrix operations, and linear system solving using Cramer's rule.   :target: https://www.python.org/downloads/
-
-
-
-- **🎯 Tangible & Ghost Elements**: Full support for both element types with automatic conversion   :alt: Python Version
+- **🎯 Tangible & Ghost Elements**: Full support for both element types with automatic conversion :alt: Python Version
 
 - **🧮 Supertropical Operations**: Addition (⊕ as max) and multiplication (⊙ as classical +)
 
@@ -34,15 +24,11 @@ A comprehensive Python package for **supertropical algebra**, featuring tangible
 
 - **📚 Comprehensive Documentation**: Full API reference, theory guide, and interactive tutorials
 
-- **✅ Type Safety**: Automatic type coercion and validation- **🎯 Tangible & Ghost Elements**: Full support for both element types with automatic conversion   :target: LICENSE
+- **✅ Type Safety**: Automatic type coercion and validation- **🎯 Tangible & Ghost Elements**: Full support for both element types with automatic conversion :target: LICENSE
 
+## 📦 Installation- **🧮 Supertropical Operations**: Addition (⊕ as max) and multiplication (⊙ as classical +) :alt: License
 
-
-## 📦 Installation- **🧮 Supertropical Operations**: Addition (⊕ as max) and multiplication (⊙ as classical +)   :alt: License
-
-
-
-```bash- **📐 Matrix Operations**: Matrix multiplication, permanent (supertropical determinant), adjoint
+````bash- **📐 Matrix Operations**: Matrix multiplication, permanent (supertropical determinant), adjoint
 
 pip install supertropical-algebra
 
@@ -118,15 +104,11 @@ from supertropical import Element, Matrix
 
 a = Element(5)
 
-```
+````
 
+### Supertropical Arithmetic## 🚀 Quick Start pip install supertropical-algebra
 
-
-### Supertropical Arithmetic## 🚀 Quick Start   pip install supertropical-algebra
-
-
-
-```python
+````python
 
 import supertropical as suptrop
 
@@ -184,7 +166,7 @@ A = suptrop.Matrix([[2, 1], c = suptrop.Element(5, is_ghost=True)
 
 Creating Elements
 
-B = suptrop.Matrix([[5, 4], 
+B = suptrop.Matrix([[5, 4],
 
                     [2, 1]])print(a)  # Output: 5.0-----------------
 
@@ -206,11 +188,11 @@ print(f"Permanent: {perm}")
 
 # Adjoint matrix
 
-adj = A.adjoint()   
+adj = A.adjoint()
 
-```
+````
 
-```python   # Tangible elements (regular)
+````python # Tangible elements (regular)
 
 ### Solving Linear Systems
 
@@ -222,9 +204,9 @@ import supertropical as suptrop# Even shorter!   b = suptrop.Element(3)
 
 
 
-# Define system: Ax = ba = Element(5)   
+# Define system: Ax = ba = Element(5)
 
-A = suptrop.Matrix([[2, 1], 
+A = suptrop.Matrix([[2, 1],
 
                     [1, 3]])```   # Ghost elements (marked with ν)
 
@@ -234,7 +216,7 @@ b = suptrop.Matrix([[5],    c = suptrop.Element(5, is_ghost=True)
 
                     [4]])
 
-### Supertropical Arithmetic   
+### Supertropical Arithmetic
 
 # Solve using Cramer's rule
 
@@ -244,7 +226,7 @@ x = A.solve(b)   print(a)  # Output: 5.0
 
 print(f"Solution:\n{x}")```python   print(c)  # Output: 5.0ν
 
-```
+````
 
 import supertropical as suptrop
 
@@ -266,9 +248,9 @@ c = suptrop.Element(5, is_ghost=True)
 
 ## 🧪 Running Tests
 
-   from supertropical import Element, Matrix
+from supertropical import Element, Matrix
 
-```bash
+````bash
 
 # Install dev dependencies# Addition (⊕): max operation with ghost rules   # Even shorter!
 
@@ -306,7 +288,7 @@ pip install -e ".[docs]"
 
 cd docs
 
-sphinx-build -b html source buildresult5 = a + 7  # Automatic conversion   
+sphinx-build -b html source buildresult5 = a + 7  # Automatic conversion
 
 
 
@@ -316,9 +298,9 @@ cd docs
 
 make html```   b = suptrop.Element(3)
 
-```
+````
 
-   c = suptrop.Element(5, is_ghost=True)
+c = suptrop.Element(5, is_ghost=True)
 
 The documentation will be in `docs/build/html/index.html`.
 
@@ -326,11 +308,11 @@ The documentation will be in `docs/build/html/index.html`.
 
 ## 🎓 Mathematical Background
 
-   # Addition (⊕): max operation with ghost rules
+# Addition (⊕): max operation with ghost rules
 
 Supertropical algebra extends tropical algebra with ghost elements:
 
-```python   result1 = a + b  # 5 ⊕ 3 = 5 (max)
+````python result1 = a + b  # 5 ⊕ 3 = 5 (max)
 
 **Operations**:
 
@@ -338,7 +320,7 @@ Supertropical algebra extends tropical algebra with ghost elements:
 
 - **Multiplication** (⊙): `a ⊙ b = a + b` (classical addition)
 
-   
+
 
 **Elements**:
 
@@ -354,7 +336,7 @@ Supertropical algebra extends tropical algebra with ghost elements:
 
 **Key Properties**:
 
-- Matrix permanent replaces determinant   
+- Matrix permanent replaces determinant
 
 - Cramer's rule works for nonsingular matrices (permanent is tangible)
 
@@ -398,7 +380,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 
 
-## 🙏 Acknowledgments# Adjoint matrix   
+## 🙏 Acknowledgments# Adjoint matrix
 
 
 
@@ -406,7 +388,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - Inspired by tropical algebra and max-plus algebra implementations
 
-```   A = suptrop.Matrix([[2, 1], 
+```   A = suptrop.Matrix([[2, 1],
 
 ## 📞 Contact
 
@@ -414,11 +396,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - **GitHub**: [https://github.com/YOUR_USERNAME/supertropical-algebra](https://github.com/YOUR_USERNAME/supertropical-algebra)
 
-- **Issues**: [https://github.com/YOUR_USERNAME/supertropical-algebra/issues](https://github.com/YOUR_USERNAME/supertropical-algebra/issues)### Solving Linear Systems   
+- **Issues**: [https://github.com/YOUR_USERNAME/supertropical-algebra/issues](https://github.com/YOUR_USERNAME/supertropical-algebra/issues)### Solving Linear Systems
 
 - **Documentation**: [https://YOUR_USERNAME.github.io/supertropical-algebra](https://YOUR_USERNAME.github.io/supertropical-algebra)
 
-   B = suptrop.Matrix([[5, 4], 
+   B = suptrop.Matrix([[5, 4],
 
 ---
 
@@ -426,13 +408,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Made with ❤️ for mathematical computing**
 
-import supertropical as suptrop   
+import supertropical as suptrop
 
    # Matrix multiplication (supertropical)
 
 # Define system: Ax = b   C = A @ B
 
-A = suptrop.Matrix([[2, 1],    
+A = suptrop.Matrix([[2, 1],
 
                     [1, 3]])   # Permanent (supertropical determinant)
 
@@ -440,7 +422,7 @@ A = suptrop.Matrix([[2, 1],
 
 b = suptrop.Matrix([[5],    print(f"Permanent: {perm}")
 
-                    [4]])   
+                    [4]])
 
    # Adjoint matrix
 
@@ -452,41 +434,39 @@ Solving Linear Systems
 
 print(f"Solution:\n{x}")----------------------
 
-```
+````
 
 .. code-block:: python
 
 ## 📖 Documentation
 
-   import supertropical as suptrop
+import supertropical as suptrop
 
-Full documentation is available at: [GitHub Pages](https://github.com/YOUR_USERNAME/supertropical-algebra)   
+Full documentation is available at: [GitHub Pages](https://github.com/YOUR_USERNAME/supertropical-algebra)
 
-   # Define system: Ax = b
+# Define system: Ax = b
 
-- **Theory Guide**: Mathematical background on supertropical algebra   A = suptrop.Matrix([[2, 1], 
+- **Theory Guide**: Mathematical background on supertropical algebra A = suptrop.Matrix([[2, 1],
 
-- **Tutorial**: Interactive Jupyter notebook with executable examples                  [1, 3]])
+- **Tutorial**: Interactive Jupyter notebook with executable examples [1, 3]])
 
-- **API Reference**: Complete API documentation with examples   
+- **API Reference**: Complete API documentation with examples
 
-   b = suptrop.Matrix([[5], 
+  b = suptrop.Matrix([[5],
 
-## 🧪 Running Tests                  [4]])
+## 🧪 Running Tests [4]])
 
-   
-
-```bash   # Solve using Cramer's rule
+````bash # Solve using Cramer's rule
 
 # Install dev dependencies   x = A.solve(b)
 
-pip install -e ".[dev]"   
+pip install -e ".[dev]"
 
    print(f"Solution:\n{x}")   # Solve using Cramer's rule
 
 # Run tests   x = A.solve(b)
 
-pytest   
+pytest
 
    print(f"Solution:\\n{x}")
 
@@ -524,17 +504,15 @@ cd docs   # Install dev dependencies
 
 make html   pip install -e ".[dev]"
 
-```   
+````
 
-   # Run tests
+# Run tests
 
-The documentation will be in `docs/build/index.html`.   pytest
+The documentation will be in `docs/build/index.html`. pytest
 
-   
+## 🎓 Mathematical Background # Run with coverage
 
-## 🎓 Mathematical Background   # Run with coverage
-
-   pytest --cov=supertropical
+pytest --cov=supertropical
 
 Supertropical algebra extends tropical algebra with ghost elements:
 
@@ -546,33 +524,27 @@ Supertropical algebra extends tropical algebra with ghost elements:
 
 - **Multiplication** (⊙): `a ⊙ b = a + b` (classical addition).. code-block:: bash
 
+**Elements**: # Install docs dependencies
 
+- **Tangible**: Regular elements (e.g., `5.0`) pip install -e ".[docs]"
 
-**Elements**:   # Install docs dependencies
+- **Ghost**: Elements marked with ν (e.g., `5.0ν`)
 
-- **Tangible**: Regular elements (e.g., `5.0`)   pip install -e ".[docs]"
+- **Zero**: `-∞` (additive identity) # Build HTML docs
 
-- **Ghost**: Elements marked with ν (e.g., `5.0ν`)   
+- **One**: `0` (multiplicative identity) cd docs
 
-- **Zero**: `-∞` (additive identity)   # Build HTML docs
+  sphinx-build -b html source build
 
-- **One**: `0` (multiplicative identity)   cd docs
+**Key Properties**:
 
-   sphinx-build -b html source build
+- Matrix permanent replaces determinant # Or use make (on Unix/Mac/Windows with make installed)
 
-**Key Properties**:   
+- Cramer's rule works for nonsingular matrices (permanent is tangible) cd docs
 
-- Matrix permanent replaces determinant   # Or use make (on Unix/Mac/Windows with make installed)
+- Applications in optimization, algebraic geometry, and phylogenetics make html
 
-- Cramer's rule works for nonsingular matrices (permanent is tangible)   cd docs
-
-- Applications in optimization, algebraic geometry, and phylogenetics   make html
-
-
-
-## 🤝 ContributingThe documentation will be in ``docs/build/index.html``.
-
-
+## 🤝 ContributingThe documentation will be in `docs/build/index.html`.
 
 Contributions are welcome! Please feel free to submit a Pull Request.🎓 Mathematical Background
 
@@ -588,23 +560,19 @@ Contributions are welcome! Please feel free to submit a Pull Request.🎓 Mathem
 
 5. Open a Pull Request
 
-- **Addition** (⊕): ``a ⊕ b = max(a, b)`` with special ghost rules
+- **Addition** (⊕): `a ⊕ b = max(a, b)` with special ghost rules
 
-## 📄 License- **Multiplication** (⊙): ``a ⊙ b = a + b`` (classical addition)
-
-
+## 📄 License- **Multiplication** (⊙): `a ⊙ b = a + b` (classical addition)
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.**Elements**:
 
+## 👥 Authors- **Tangible**: Regular elements (e.g., `5.0`)
 
+- **Ghost**: Elements marked with ν (e.g., `5.0ν`)
 
-## 👥 Authors- **Tangible**: Regular elements (e.g., ``5.0``)
+- **Supertropical Team**- **Zero**: `-∞` (additive identity)
 
-- **Ghost**: Elements marked with ν (e.g., ``5.0ν``)
-
-- **Supertropical Team**- **Zero**: ``-∞`` (additive identity)
-
-- **One**: ``0`` (multiplicative identity)
+- **One**: `0` (multiplicative identity)
 
 ## 🙏 Acknowledgments
 
@@ -618,46 +586,36 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact- Applications in optimization, algebraic geometry, and phylogenetics
 
-
-
 - GitHub: https://github.com/YOUR_USERNAME/supertropical-algebra🤝 Contributing
 
 - Issues: https://github.com/YOUR_USERNAME/supertropical-algebra/issues===============
 
-
-
 ---Contributions are welcome! Please feel free to submit a Pull Request.
-
-
 
 Made with ❤️ for mathematical computing1. Fork the repository
 
-2. Create your feature branch (``git checkout -b feature/amazing-feature``)
-3. Commit your changes (``git commit -m 'Add amazing feature'``)
-4. Push to the branch (``git push origin feature/amazing-feature``)
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-📄 License
-==========
+# 📄 License
 
-This project is licensed under the MIT License - see the `LICENSE <LICENSE>`_ file for details.
+This project is licensed under the MIT License - see the `LICENSE <LICENSE>`\_ file for details.
 
-👥 Authors
-==========
+# 👥 Authors
 
 - **Supertropical Team**
 
-🙏 Acknowledgments
-==================
+# 🙏 Acknowledgments
 
 - Based on research by Izhakian, Z., & Rowen, L. on supertropical algebra
 - Inspired by tropical algebra and max-plus algebra implementations
 
-📞 Contact
-==========
+# 📞 Contact
 
-- GitHub: `https://github.com/YOUR_USERNAME/supertropical-algebra <https://github.com/YOUR_USERNAME/supertropical-algebra>`_
-- Issues: `https://github.com/YOUR_USERNAME/supertropical-algebra/issues <https://github.com/YOUR_USERNAME/supertropical-algebra/issues>`_
+- GitHub: `https://github.com/YOUR_USERNAME/supertropical-algebra <https://github.com/YOUR_USERNAME/supertropical-algebra>`\_
+- Issues: `https://github.com/YOUR_USERNAME/supertropical-algebra/issues <https://github.com/YOUR_USERNAME/supertropical-algebra/issues>`\_
 
 ---
 
