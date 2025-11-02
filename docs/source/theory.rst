@@ -20,7 +20,7 @@ Elements
 A supertropical semiring contains two types of elements:
 
 - **Tangible elements**: Regular elements, denoted as :math:`a`
-- **Ghost elements**: Special elements marked with ν, denoted as :math:`a\nu`
+- **Ghost elements**: Special elements marked with ν, denoted as :math:`a^\nu`
 
 The **zero element** is :math:`-\infty` (additive identity).
 
@@ -35,15 +35,15 @@ Operations
 
    a \oplus b = \begin{cases}
    \max(a, b) & \text{if } a \neq b \\
-   a\nu & \text{if } a = b
+   a^\nu & \text{if } a = b
    \end{cases}
 
 Rules:
 
 1. :math:`a \oplus b = \max(a, b)` when :math:`a \neq b` (tangible result)
-2. :math:`a \oplus a = a\nu` (becomes ghost)
-3. :math:`a \oplus a\nu = a\nu` (ghost absorbs tangible of same value)
-4. :math:`a\nu \oplus b\nu = \max(a, b)\nu` (ghost addition)
+2. :math:`a \oplus a = a^\nu` (becomes ghost)
+3. :math:`a \oplus a^\nu = a^\nu` (ghost absorbs tangible of same value)
+4. :math:`a^\nu \oplus b^\nu = \max(a, b)^\nu` (ghost addition)
 
 **Supertropical Multiplication** (:math:`\odot`):
 
@@ -54,8 +54,8 @@ Rules:
 Rules:
 
 1. :math:`a \odot b = a + b` (classical addition)
-2. :math:`a \odot b\nu = (a + b)\nu` (result is ghost if any operand is ghost)
-3. :math:`a\nu \odot b\nu = (a + b)\nu`
+2. :math:`a \odot b^\nu = (a + b)^\nu` (result is ghost if any operand is ghost)
+3. :math:`a^\nu \odot b^\nu = (a + b)^\nu`
 
 Properties
 ^^^^^^^^^^
@@ -63,7 +63,7 @@ Properties
 - **Associativity**: Both :math:`\oplus` and :math:`\odot` are associative
 - **Commutativity**: Both operations are commutative
 - **Distributivity**: :math:`a \odot (b \oplus c) = (a \odot b) \oplus (a \odot c)`
-- **Idempotency**: :math:`a \oplus a = a\nu` (not strictly idempotent due to ghost)
+- **Idempotency**: :math:`a \oplus a = a^\nu` (not strictly idempotent due to ghost)
 
 Matrix Operations
 -----------------
@@ -142,7 +142,7 @@ References
 ----------
 
 - Izhakian, Z., & Rowen, L. (2010). *Supertropical algebra*. Advances in Mathematics.
-- Izhakian, Z. (2009). *Supertropical matrix algebra*. Israel Journal of Mathematics.
+- Subiono (2022). *Aljabar Min-Max Plus dan Terapannya*. Departemen Matematika ITS, Surabaya, 22 February 2022.
 
 Implementation Notes
 --------------------
