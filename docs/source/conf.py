@@ -38,6 +38,11 @@ master_doc = 'index'
 html_theme = 'sphinx_rtd_theme'  # ReadTheDocs theme
 html_static_path = ['_static']
 
+# Add custom CSS for better styling
+html_css_files = [
+    'custom.css',
+]
+
 # -- Options for autodoc -----------------------------------------------------
 autodoc_member_order = 'bysource'
 autodoc_typehints = 'description'
@@ -55,19 +60,30 @@ nbsphinx_allow_errors = False  # Don't allow errors in notebooks
 # nbsphinx kernel name
 nbsphinx_kernel_name = 'python3'
 
+# Add Binder link for interactive notebooks
+nbsphinx_prolog = """
+.. raw:: html
+
+    <div class="interactive-banner">
+        <p style="margin: 0 0 10px 0; font-size: 18px;">
+            <span class="icon">🚀</span> <strong>Run This Code Interactively!</strong>
+        </p>
+        <p style="margin: 0 0 10px 0;">
+            Click the button below to launch this notebook in an interactive environment where you can edit and run all code cells:
+        </p>
+        <a href="https://mybinder.org/v2/gh/TetewHeroez/supertropical-algebra/main?filepath=docs/source/examples/tutorial.ipynb" 
+           target="_blank">
+           ▶️ Launch on Binder (Interactive)
+        </a>
+        <a href="https://github.com/TetewHeroez/supertropical-algebra/blob/main/docs/source/examples/tutorial.ipynb" 
+           target="_blank">
+           📄 View on GitHub
+        </a>
+    </div>
+"""
+
 # -- Options for sphinx-thebe (interactive code) -----------------------------
 thebe_config = {
     "repository_url": "https://github.com/TetewHeroez/supertropical-algebra",
     "repository_branch": "main",
-    "selector": ".highlight-python",  # Enable on Python code blocks
-    "selector_input": "pre",
-    "selector_output": ".output",
-}
-
-# Add thebe button to launch interactive mode
-html_theme_options = {
-    'launch_buttons': {
-        'thebe': True,
-        'binderhub_url': 'https://mybinder.org',
-    },
 }
