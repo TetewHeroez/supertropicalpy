@@ -81,8 +81,8 @@ Matrix Arithmetic:
 
 .. code-block:: python
 
-   C = A @ B              # Matrix multiplication
-   D = A * scalar         # Scalar multiplication
+   C = A * B              # Matrix multiplication
+   D = A * scalar         # Scalar multiplication (same operator!)
    
    perm = A.permanent()   # Permanent (supertropical determinant)
    adj = A.adjoint()      # Adjoint matrix

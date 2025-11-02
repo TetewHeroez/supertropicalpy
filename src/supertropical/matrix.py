@@ -44,51 +44,54 @@ class SupertropicalMatrix:
 
     def __mul__(self, other):
         """
-        Scalar multiplication with a SupertropicalElement.
-        Each element of the matrix is multiplied by the scalar.
+        Matrix multiplication or scalar multiplication.
+        
+        - If other is SupertropicalMatrix: performs supertropical matrix multiplication
+          C_ij = ⊕_k (A_ik ⊙ B_kj)
+        - If other is scalar (SupertropicalElement, int, float): multiplies each element
         """
-        if isinstance(other, SupertropicalElement):
+        if isinstance(other, SupertropicalMatrix):
+            # Matrix multiplication
+            if self.shape[1] != other.shape[0]:
+                raise ValueError(f"Matrix dimensions do not match: {self.shape} * {other.shape}.")
+
+            new_shape = (self.shape[0], other.shape[1])
+            result_matrix = np.empty(new_shape, dtype=object)
+
+            for i in range(new_shape[0]):
+                for j in range(new_shape[1]):
+                    # Initialize C_ij with the zero element (-inf)
+                    sum_val = SupertropicalElement(-np.inf)
+                    
+                    for k in range(self.shape[1]):
+                        # Calculate A_ik ⊙ B_kj (using element multiplication)
+                        prod = self[i, k] * other[k, j]
+                        # Perform C_ij = C_ij ⊕ (A_ik ⊙ B_kj) (using element addition)
+                        sum_val = sum_val + prod
+                    
+                    result_matrix[i, j] = sum_val
+
+            return SupertropicalMatrix(result_matrix)
+            
+        elif isinstance(other, SupertropicalElement):
+            # Scalar multiplication
             result = np.empty(self.shape, dtype=object)
             for i in range(self.shape[0]):
                 for j in range(self.shape[1]):
                     result[i, j] = self[i, j] * other
             return SupertropicalMatrix(result)
+            
         elif isinstance(other, (int, float)):
             return self * SupertropicalElement(other)
+            
         else:
-            raise TypeError("Can only multiply by SupertropicalElement or scalar.")
+            raise TypeError("Can only multiply by SupertropicalMatrix, SupertropicalElement or scalar.")
 
     def __rmul__(self, other):
-        return self.__mul__(other)
-
-    def __matmul__(self, other):
-        """
-        Performs supertropical matrix multiplication (A @ B).
-        Implements C_ij = $\oplus_k (A_ik \odot B_kj)$
-        """
-        if not isinstance(other, SupertropicalMatrix):
-            raise TypeError("Multiplication is only supported for SupertropicalMatrix.")
-
-        if self.shape[1] != other.shape[0]:
-            raise ValueError(f"Matrix dimensions do not match: {self.shape} @ {other.shape}.")
-
-        new_shape = (self.shape[0], other.shape[1])
-        result_matrix = np.empty(new_shape, dtype=object)
-
-        for i in range(new_shape[0]):
-            for j in range(new_shape[1]):
-                # Initialize C_ij with the zero element (-inf)
-                sum_val = SupertropicalElement(-np.inf)
-                
-                for k in range(self.shape[1]):
-                    # Calculate A_ik * B_kj
-                    prod = self[i, k] * other[k, j]
-                    # Perform (C_ij) = (C_ij) + (A_ik * B_kj)
-                    sum_val = sum_val + prod
-                
-                result_matrix[i, j] = sum_val
-
-        return SupertropicalMatrix(result_matrix)
+        if isinstance(other, (int, float, SupertropicalElement)):
+            return self.__mul__(other)
+        else:
+            raise TypeError("Left multiplication only supported for scalars.")
     
     # --- Linear Algebra Methods ---
 

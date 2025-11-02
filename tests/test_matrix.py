@@ -44,7 +44,7 @@ class TestMatrixMultiplication:
         """Test multiplying two 2×2 matrices."""
         A = SupertropicalMatrix([[2, 1], [1, 3]])
         B = SupertropicalMatrix([[1, 0], [0, 1]])
-        C = A @ B
+        C = A * B
         assert C.shape == (2, 2)
         # Verify some elements
         assert isinstance(C[0, 0], SupertropicalElement)
@@ -54,7 +54,7 @@ class TestMatrixMultiplication:
         A = SupertropicalMatrix([[2, 1], [1, 3]])
         # In supertropical, 0 is multiplicative identity
         I = SupertropicalMatrix([[0, -math.inf], [-math.inf, 0]])
-        C = A @ I
+        C = A * I
         # Result should be close to A (considering ghost conversions)
         assert C.shape == A.shape
         
@@ -62,14 +62,14 @@ class TestMatrixMultiplication:
         """Test multiplying 3×3 matrices."""
         A = SupertropicalMatrix([[1, 2, 0], [0, 1, 2], [2, 0, 1]])
         B = SupertropicalMatrix([[1, 0, 0], [0, 1, 0], [0, 0, 1]])
-        C = A @ B
+        C = A * B
         assert C.shape == (3, 3)
         
     def test_multiply_non_square_matrices(self):
         """Test multiplying non-square matrices."""
         A = SupertropicalMatrix([[1, 2], [3, 4], [5, 6]])  # 3×2
         B = SupertropicalMatrix([[1, 2, 3], [4, 5, 6]])    # 2×3
-        C = A @ B
+        C = A * B
         assert C.shape == (3, 3)
         
     def test_multiply_wrong_dimensions_raises_error(self):
@@ -77,7 +77,7 @@ class TestMatrixMultiplication:
         A = SupertropicalMatrix([[1, 2]])  # 1×2
         B = SupertropicalMatrix([[1], [2], [3]])  # 3×1
         with pytest.raises(ValueError):
-            C = A @ B
+            C = A * B
 
 
 class TestScalarMultiplication:
@@ -279,7 +279,7 @@ class TestMatrixWithGhostElements:
         g = SupertropicalElement(2, is_ghost=True)
         A = SupertropicalMatrix([[1, g], [2, 3]])
         B = SupertropicalMatrix([[1, 0], [0, 1]])
-        C = A @ B
+        C = A * B
         assert C.shape == (2, 2)
         
     def test_permanent_with_ghosts(self):
