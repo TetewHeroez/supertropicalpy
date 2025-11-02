@@ -1,26 +1,16 @@
 # Supertropical Algebra# Supertropical Algebra# Supertropical Algebra=======================
 
-
-
 [![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)[![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)Supertropical Algebra
 
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/TetewHeroez/supertropical-algebra/main?filepath=docs/source/examples/tutorial.ipynb)[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-
-
 A comprehensive Python package for **supertropical algebra**, featuring tangible and ghost elements, matrix operations, and linear system solving using Cramer's rule.[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/YOUR_USERNAME/supertropical-algebra/main?filepath=docs/source/examples/tutorial.ipynb)[![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)=======================
-
-
 
 > **🚀 Try it now!** Click the Binder badge above to run the interactive tutorial in your browser without installing anything.A comprehensive Python package for **supertropical algebra**, featuring tangible and ghost elements, matrix operations, and linear system solving using Cramer's rule.[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-
-
 ## ✨ Features> **🚀 Try it now!** Click the Binder badge above to run the interactive tutorial in your browser without installing anything... image:: https://img.shields.io/badge/python-3.8+-blue.svg
-
-
 
 - **🎯 Tangible & Ghost Elements**: Full support for both element types with automatic conversion## ✨ FeaturesA comprehensive Python package for **supertropical algebra**, featuring tangible and ghost elements, matrix operations, and linear system solving using Cramer's rule. :target: https://www.python.org/downloads/
 
@@ -36,13 +26,9 @@ A comprehensive Python package for **supertropical algebra**, featuring tangible
 
 - **✅ Type Safety**: Automatic type coercion and validation- **📐 Matrix Operations**: Matrix multiplication, permanent (supertropical determinant), adjoint## ✨ Features
 
-
-
 ## 📦 Installation- **🔧 Linear System Solver**: Cramer's rule implementation for solving Ax = b
 
-
-
-```bash- **🚀 NumPy Integration**: Efficient computations using NumPy arrays.. image:: https://img.shields.io/badge/license-MIT-green.svg
+`````bash- **🚀 NumPy Integration**: Efficient computations using NumPy arrays.. image:: https://img.shields.io/badge/license-MIT-green.svg
 
 pip install supertropical-algebra
 
@@ -102,13 +88,9 @@ print(a)  # Output: 5.0```===========
 
 print(c)  # Output: 5.0ν
 
-```
-
-
+`````
 
 **Alternative:** You can also import directly:## 🚀 Quick Start## 📦 Installation
-
-
 
 ```python
 
@@ -120,13 +102,9 @@ a = Element(5)
 
 ```
 
-
-
 ### Supertropical Arithmetic### Creating Elements```bash- **🧮 Supertropical Operations**: Addition (⊕ as max) and multiplication (⊙ as classical +)
 
-
-
-```python
+````python
 
 import supertropical as suptrop
 
@@ -184,7 +162,7 @@ A = suptrop.Matrix([[2, 1], ```git clone https://github.com/YOUR_USERNAME/supert
 
 
 
-B = suptrop.Matrix([[5, 4], 
+B = suptrop.Matrix([[5, 4],
 
                     [2, 1]])**Alternative:** You can also import directly:cd supertropical-algebra===============
 
@@ -208,9 +186,9 @@ print(f"Permanent: {perm}")
 
 adj = A.adjoint()a = Element(5)
 
-```
-
 ````
+
+`````
 
 ### Solving Linear Systems
 
@@ -224,7 +202,7 @@ import supertropical as suptrop````python
 
 # Define system: Ax = bimport supertropical as suptrop
 
-A = suptrop.Matrix([[2, 1], 
+A = suptrop.Matrix([[2, 1],
 
                     [1, 3]])**Recommended: Use short alias (like numpy as np or tensorflow as tf)**Or install from source:
 
@@ -440,7 +418,7 @@ x = A.solve(b)   print(a)  # Output: 5.0
 
 print(f"Solution:\n{x}")```python   print(c)  # Output: 5.0ν
 
-````
+`````
 
 import supertropical as suptrop
 
