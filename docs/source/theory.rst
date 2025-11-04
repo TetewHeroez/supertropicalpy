@@ -90,7 +90,7 @@ where :math:`\mathcal{G}_0` is the set of ghost elements.
 3.1 Matrix Operations
 ^^^^^^^^^^^^^^^^^^^^^
 
-The set of all :math:`m \times n` matrices over supertropical semiring is denoted as :math:`M_{m \times n}(R)`, where matrix elements are members of :math:`R`. When the dimension of a matrix is square, denoted as :math:`M_n(R)`, the binary operations Γèò and Γèù in :math:`R` can be extended to matrix operations in :math:`M_n(R)`. Furthermore, the ghost surpasses relation in :math:`R` can also be extended to matrices in :math:`M_n(R)`.
+The set of all :math:`m \times n` matrices over supertropical semiring is denoted as :math:`M_{m \times n}(R)`, where matrix elements are members of :math:`R`. When the dimension of a matrix is square, denoted as :math:`M_n(R)`, the binary operations ⊕ and ⊗ in :math:`R` can be extended to matrix operations in :math:`M_n(R)`. Furthermore, the ghost surpasses relation in :math:`R` can also be extended to matrices in :math:`M_n(R)`.
 
 If :math:`A \vDash B` then :math:`a_{i,j} \vDash b_{i,j}` for any :math:`i` and :math:`j` in :math:`\underline{n}`.
 
@@ -104,6 +104,18 @@ For matrices :math:`A, B \in M_{m \times n}(R)`, the addition :math:`A \oplus B`
 
 for :math:`i \in \underline{m}` and :math:`j \in \underline{n}`.
 
+**Example 3.1**: Given matrices
+
+.. math::
+
+   A = \begin{pmatrix} 2 & 1 \\ 1 & 3 \end{pmatrix}, \quad B = \begin{pmatrix} 5 & 4^\nu \\ 2 & 1 \end{pmatrix}
+
+Then:
+
+.. math::
+
+   A \oplus B = \begin{pmatrix} 2 \oplus 5 & 1 \oplus 4^\nu \\ 1 \oplus 2 & 3 \oplus 1 \end{pmatrix} = \begin{pmatrix} 5 & 4^\nu \\ 2 & 3 \end{pmatrix}
+
 **Matrix Multiplication**
 
 For matrix :math:`A \in M_{m \times p}(R)` and :math:`B \in M_{p \times n}(R)`, the multiplication :math:`A \otimes B` is defined as:
@@ -113,6 +125,182 @@ For matrix :math:`A \in M_{m \times p}(R)` and :math:`B \in M_{p \times n}(R)`, 
    [A \otimes B]_{i,j} = \bigoplus_{k=1}^{p} a_{i,k} \otimes b_{k,j}
 
 for :math:`i \in \underline{m}` and :math:`j \in \underline{n}`.
+
+**Example 3.2**: Using the same matrices :math:`A` and :math:`B` from Example 3.1:
+
+.. math::
+
+   A \otimes B = \begin{pmatrix} 
+   (2 \otimes 5) \oplus (1 \otimes 2) & (2 \otimes 4^\nu) \oplus (1 \otimes 1) \\
+   (1 \otimes 5) \oplus (3 \otimes 2) & (1 \otimes 4^\nu) \oplus (3 \otimes 1)
+   \end{pmatrix}
+
+.. math::
+
+   = \begin{pmatrix} 
+   7 \oplus 3 & 6^\nu \oplus 2 \\
+   6 \oplus 5 & 5^\nu \oplus 4
+   \end{pmatrix} = \begin{pmatrix} 
+   7 & 6^\nu \\
+   6 & 5^\nu
+   \end{pmatrix}
+
+3.2 Advanced Matrix Operations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Matrix Transpose**
+
+For any matrix :math:`A \in M_{m \times n}(R)`, its transpose :math:`A^T \in M_{n \times m}(R)` is defined by:
+
+.. math::
+
+   [A^T]_{i,j} = a_{j,i}
+
+where :math:`i \in \underline{n}` and :math:`j \in \underline{m}`.
+
+**Example 3.3**: For the matrix
+
+.. math::
+
+   A = \begin{pmatrix} 2 & 1 & 5^\nu \\ 3 & 4 & 1 \end{pmatrix}
+
+The transpose is:
+
+.. math::
+
+   A^T = \begin{pmatrix} 2 & 3 \\ 1 & 4 \\ 5^\nu & 1 \end{pmatrix}
+
+**Matrix Power**
+
+For any square matrix :math:`A \in M_n(R)` and positive integer :math:`k`, the power :math:`A^k` is defined recursively:
+
+.. math::
+
+   A^1 = A, \quad A^k = A^{k-1} \otimes A
+
+**Example 3.4**: For the matrix
+
+.. math::
+
+   A = \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix}
+
+We can compute:
+
+.. math::
+
+   A^2 = A \otimes A = \begin{pmatrix} 
+   (1 \otimes 1) \oplus (2 \otimes 0) & (1 \otimes 2) \oplus (2 \otimes 1) \\
+   (0 \otimes 1) \oplus (1 \otimes 0) & (0 \otimes 2) \oplus (1 \otimes 1)
+   \end{pmatrix}
+
+.. math::
+
+   = \begin{pmatrix} 
+   1 \oplus (-\infty) & 3 \oplus 3 \\
+   (-\infty) \oplus (-\infty) & (-\infty) \oplus 1
+   \end{pmatrix} = \begin{pmatrix} 
+   1 & 3 \\
+   -\infty & 1
+   \end{pmatrix}
+
+**Identity Matrix**
+
+The identity matrix :math:`I_n \in M_n(R)` is defined as:
+
+.. math::
+
+   [I_n]_{i,j} = \begin{cases}
+   0 & \text{if } i = j \\
+   -\infty & \text{if } i \neq j
+   \end{cases}
+
+It satisfies :math:`A \otimes I_n = I_n \otimes A = A` for any :math:`A \in M_n(R)`.
+
+3.3 Permanent (Supertropical Determinant)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The **permanent** of a square matrix :math:`A \in M_n(R)` is defined as:
+
+.. math::
+
+   \text{per}(A) = \bigoplus_{\sigma \in S_n} \bigotimes_{i=1}^{n} a_{i,\sigma(i)}
+
+where :math:`S_n` is the set of all permutations of :math:`\{1, 2, \ldots, n\}`.
+
+**Example 3.5**: For a :math:`2 \times 2` matrix
+
+.. math::
+
+   A = \begin{pmatrix} 3 & 1 \\ 2 & 4 \end{pmatrix}
+
+The permanent is:
+
+.. math::
+
+   \text{per}(A) = (3 \otimes 4) \oplus (1 \otimes 2) = 7 \oplus 3 = 7
+
+For a :math:`3 \times 3` matrix
+
+.. math::
+
+   B = \begin{pmatrix} 1 & 2 & 0 \\ 2 & 1 & 3 \\ 1 & 0 & 2 \end{pmatrix}
+
+We compute over all 6 permutations:
+
+1. :math:`(1,2,3) \to 1 \otimes 1 \otimes 2 = 4`
+2. :math:`(1,3,2) \to 1 \otimes 3 \otimes 0 = 4`
+3. :math:`(2,1,3) \to 2 \otimes 2 \otimes 2 = 6`
+4. :math:`(2,3,1) \to 2 \otimes 3 \otimes 1 = 6`
+5. :math:`(3,1,2) \to 0 \otimes 2 \otimes 0 = 2`
+6. :math:`(3,2,1) \to 0 \otimes 1 \otimes 1 = 2`
+
+Therefore :math:`\text{per}(B) = 4 \oplus 4 \oplus 6 \oplus 6 \oplus 2 \oplus 2 = 6`.
+
+3.4 Adjoint Matrix and Pseudo-Inverse
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The **adjoint matrix** :math:`\text{adj}(A)` of a matrix :math:`A \in M_n(R)` is defined by:
+
+.. math::
+
+   [\text{adj}(A)]_{i,j} = \text{per}(M_{j,i})
+
+where :math:`M_{j,i}` is the :math:`(n-1) \times (n-1)` minor obtained by deleting row :math:`j` and column :math:`i` from :math:`A`.
+
+The **pseudo-inverse** or **weak inverse** :math:`A^\nabla` is defined as:
+
+.. math::
+
+   A^\nabla = \text{adj}(A) \otimes (\text{per}(A))^{-1}
+
+where :math:`(\text{per}(A))^{-1} = -\text{per}(A)` in supertropical algebra.
+
+**Example 3.6**: For the matrix
+
+.. math::
+
+   A = \begin{pmatrix} 3 & 1 \\ 2 & 4 \end{pmatrix}
+
+We have :math:`\text{per}(A) = 7` (from Example 3.5).
+
+The minors are:
+
+- :math:`M_{1,1} = (4)`, so :math:`\text{per}(M_{1,1}) = 4`
+- :math:`M_{1,2} = (2)`, so :math:`\text{per}(M_{1,2}) = 2`
+- :math:`M_{2,1} = (1)`, so :math:`\text{per}(M_{2,1}) = 1`
+- :math:`M_{2,2} = (3)`, so :math:`\text{per}(M_{2,2}) = 3`
+
+Therefore:
+
+.. math::
+
+   \text{adj}(A) = \begin{pmatrix} 4 & 2 \\ 1 & 3 \end{pmatrix}
+
+The pseudo-inverse is:
+
+.. math::
+
+   A^\nabla = \text{adj}(A) \otimes (-7) = \begin{pmatrix} 4 + (-7) & 2 + (-7) \\ 1 + (-7) & 3 + (-7) \end{pmatrix} = \begin{pmatrix} -3 & -5 \\ -6 & -4 \end{pmatrix}
 
 4. Linear Systems over Supertropical Algebra
 ---------------------------------------------
@@ -147,6 +335,67 @@ where:
 - :math:`(\text{per}(A))^{-1} = -\text{per}(A)` in supertropical algebra
 
 The matrix is **nonsingular** (has unique solution) if :math:`\text{per}(A)` is **tangible** (not ghost).
+
+**Example 4.1**: Solve the system :math:`A \otimes x \vDash b` where
+
+.. math::
+
+   A = \begin{pmatrix} 2 & 3 \\ 1 & 4 \end{pmatrix}, \quad b = \begin{pmatrix} 8 \\ 7 \end{pmatrix}
+
+**Step 1**: Compute the permanent
+
+.. math::
+
+   \text{per}(A) = (2 \otimes 4) \oplus (3 \otimes 1) = 6 \oplus 4 = 6
+
+Since :math:`\text{per}(A) = 6` is tangible, the system has a unique solution.
+
+**Step 2**: Compute the adjoint matrix
+
+The minors are:
+
+- :math:`M_{1,1} = (4)`, so :math:`\text{per}(M_{1,1}) = 4`
+- :math:`M_{1,2} = (1)`, so :math:`\text{per}(M_{1,2}) = 1`
+- :math:`M_{2,1} = (3)`, so :math:`\text{per}(M_{2,1}) = 3`
+- :math:`M_{2,2} = (2)`, so :math:`\text{per}(M_{2,2}) = 2`
+
+Therefore:
+
+.. math::
+
+   \text{adj}(A) = \begin{pmatrix} 4 & 1 \\ 3 & 2 \end{pmatrix}
+
+**Step 3**: Apply Cramer's rule
+
+.. math::
+
+   x = \text{adj}(A) \otimes b \otimes (-\text{per}(A)) = \begin{pmatrix} 4 & 1 \\ 3 & 2 \end{pmatrix} \otimes \begin{pmatrix} 8 \\ 7 \end{pmatrix} \otimes (-6)
+
+First compute :math:`\text{adj}(A) \otimes b`:
+
+.. math::
+
+   \text{adj}(A) \otimes b = \begin{pmatrix} (4 \otimes 8) \oplus (1 \otimes 7) \\ (3 \otimes 8) \oplus (2 \otimes 7) \end{pmatrix} = \begin{pmatrix} 12 \oplus 8 \\ 11 \oplus 9 \end{pmatrix} = \begin{pmatrix} 12 \\ 11 \end{pmatrix}
+
+Then multiply by :math:`-6`:
+
+.. math::
+
+   x = \begin{pmatrix} 12 + (-6) \\ 11 + (-6) \end{pmatrix} = \begin{pmatrix} 6 \\ 5 \end{pmatrix}
+
+**Step 4**: Verify the solution
+
+.. math::
+
+   A \otimes x = \begin{pmatrix} 2 & 3 \\ 1 & 4 \end{pmatrix} \otimes \begin{pmatrix} 6 \\ 5 \end{pmatrix} = \begin{pmatrix} (2 \otimes 6) \oplus (3 \otimes 5) \\ (1 \otimes 6) \oplus (4 \otimes 5) \end{pmatrix}
+
+.. math::
+
+   = \begin{pmatrix} 8 \oplus 8 \\ 7 \oplus 9 \end{pmatrix} = \begin{pmatrix} 8^\nu \\ 9 \end{pmatrix}
+
+We check: :math:`8^\nu \vDash 8` ✓ and :math:`9 \vDash 7` ✓ (since :math:`9 > 7`).
+
+Therefore :math:`x = \begin{pmatrix} 6 \\ 5 \end{pmatrix}` is indeed a solution.
 
 References
 ----------
