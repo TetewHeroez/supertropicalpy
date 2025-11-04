@@ -340,11 +340,15 @@ where:
 
 The matrix is **nonsingular** (has unique solution) if :math:`\text{per}(A)` is **tangible** (not ghost).
 
+**Implementation**: The package provides the `solve()` method that implements this algorithm automatically.
+
 **Example 4.1**: Solve the system :math:`A \otimes x \vDash b` where
 
 .. math::
 
    A = \begin{pmatrix} 2 & 3 \\ 1 & 4 \end{pmatrix}, \quad b = \begin{pmatrix} 8 \\ 7 \end{pmatrix}
+
+Using the `solve()` method or manual computation:
 
 **Step 1**: Compute the permanent
 
