@@ -63,6 +63,9 @@ Features
 - **Tangible and Ghost Elements**: Full support for both element types
 - **Arithmetic Operations**: Supertropical addition ⊕ and multiplication ⊙
 - **Matrix Operations**: Matrix multiplication, permanent (supertropical determinant), adjoint
+- **Advanced Matrix Operations**: Transpose, power, identity, pseudo-zero, pseudo-inverse
+- **Element Power**: Support for positive and negative exponents
+- **Ghost Surpasses Relation**: Check ghost element relationships
 - **Linear System Solver**: Cramer's rule implementation for solving Ax = b
 - **Type Safety**: Automatic coercion and type checking
 - **NumPy Integration**: Efficient array operations under the hood
@@ -76,6 +79,7 @@ Contents
 
    theory
    examples/tutorial
+   advanced
 
 .. toctree::
    :maxdepth: 2

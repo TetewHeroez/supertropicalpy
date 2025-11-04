@@ -102,25 +102,29 @@ class SupertropicalElement:
         Performs exponentiation (power) of element.
         
         For element a and integer k:
-        a^k = a * a * ... * a (k times) using supertropical multiplication
+        - If k > 0: a^k = k * a (classical multiplication)
+        - If k = 0: a^0 = 0 (multiplicative identity)
+        - If k < 0: a^k = k * a (negative multiplication, e.g., 8^-2 = -16)
         
-        In supertropical algebra: a^k = k * a (classical multiplication of value)
+        In max-plus algebra, negative exponents work as repeated subtraction:
+        a^(-k) = -k * a
+        
         If a is ghost, result is also ghost.
         
         Args:
-            exponent (int): The power to raise the element to
+            exponent (int): The power to raise the element to (can be negative)
             
         Returns:
             SupertropicalElement: The result of a^exponent
         """
-        if not isinstance(exponent, int) or exponent < 0:
-            raise ValueError("Exponent must be a non-negative integer")
+        if not isinstance(exponent, int):
+            raise ValueError("Exponent must be an integer")
         
         if exponent == 0:
             # a^0 = 0 (multiplicative identity in supertropical)
             return SupertropicalElement(0, is_ghost=False)
         
-        # a^k = k * a in supertropical multiplication
+        # a^k = k * a (works for both positive and negative k)
         new_val = exponent * self.value
         return SupertropicalElement(new_val, is_ghost=self.is_ghost)
 
