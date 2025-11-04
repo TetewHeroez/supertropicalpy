@@ -164,10 +164,10 @@ Optional dependencies for documentation:
 Next Steps
 ----------
 
-- :doc:`theory` - Learn the mathematical theory with interactive examples
-- :doc:`advanced` - Explore advanced features
+- :doc:`theory` - Learn the mathematical theory with complete examples
+- :doc:`examples/01_supertropical_elements` - Interactive element operations
+- :doc:`examples/03_matrices` - Interactive matrix examples
 - :doc:`api/index` - Browse the complete API reference
-- :doc:`examples/tutorial` - Work through the tutorial notebook
 
 Troubleshooting
 ---------------
