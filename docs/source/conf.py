@@ -70,7 +70,7 @@ nbsphinx_prolog = r"""
            style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background-color: #f5f5f5; color: #333; text-decoration: none; border: 1px solid #ddd; border-radius: 4px; font-size: 14px;">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Google_Colab_pic.png/250px-Google_Colab_pic.png" 
                  alt="Colab" 
-                 style="width: 20px;">
+                 style="height: 20px;">
             Open in Google Colab
         </a>
     </div>
