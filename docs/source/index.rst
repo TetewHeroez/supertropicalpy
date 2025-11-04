@@ -78,7 +78,21 @@ Contents
    :caption: User Guide
 
    getting_started
-   examples/tutorial
+   theory
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Interactive Examples
+
+   examples/01_supertropical_elements
+   examples/02_ghost_surpasses
+   examples/03_matrices
+   examples/04_linear_systems
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Advanced Topics
+
    advanced
 
 .. toctree::
