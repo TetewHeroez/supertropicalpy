@@ -1,7 +1,7 @@
-Supertropical Algebra Documentation
-====================================
+SupertropicalPy Documentation
+=============================
 
-Welcome to the **Supertropical Algebra** package documentation!
+Welcome to the **SupertropicalPy** package documentation!
 
 This package provides a complete implementation of supertropical algebra in Python,
 featuring tangible and ghost elements, matrix operations, and linear system solving.
@@ -20,7 +20,7 @@ Installation:
 
 .. code-block:: bash
 
-   pip install supertropical-algebra
+   pip install supertropicalpy
 
 Basic usage (recommended - like numpy as np):
 

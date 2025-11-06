@@ -8,10 +8,10 @@ import sys
 sys.path.insert(0, os.path.abspath('../../src'))
 
 # -- Project information -----------------------------------------------------
-project = 'Supertropical Algebra'
+project = 'SupertropicalPy'
 copyright = '2025, Supertropical Team'
 author = 'Supertropical Team'
-release = '0.1.1'
+release = '0.1.2'
 
 # -- General configuration ---------------------------------------------------
 extensions = [
@@ -65,7 +65,7 @@ nbsphinx_prolog = r"""
 .. raw:: html
 
     <div style="text-align: center; margin: 10px 0;">
-        <a href="https://colab.research.google.com/github/TetewHeroez/supertropical-algebra/blob/main/docs/source/{{ env.doc2path(env.docname, base=None) }}" 
+        <a href="https://colab.research.google.com/github/TetewHeroez/supertropicalpy/blob/main/docs/source/{{ env.doc2path(env.docname, base=None) }}" 
            target="_blank" 
            style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background-color: #f5f5f5; color: #333; text-decoration: none; border: 1px solid #ddd; border-radius: 4px; font-size: 14px;">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Google_Colab_pic.png/250px-Google_Colab_pic.png" 
@@ -78,6 +78,6 @@ nbsphinx_prolog = r"""
 
 # -- Options for sphinx-thebe (interactive code) -----------------------------
 thebe_config = {
-    "repository_url": "https://github.com/TetewHeroez/supertropical-algebra",
+    "repository_url": "https://github.com/TetewHeroez/supertropicalpy",
     "repository_branch": "main",
 }

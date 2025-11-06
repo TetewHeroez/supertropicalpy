@@ -1,8 +1,8 @@
-﻿# Supertropical Algebra
+﻿# SupertropicalPy
 
 [![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/TetewHeroez/supertropical-algebra/blob/main/docs/source/examples/tutorial.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/TetewHeroez/supertropicalpy/blob/main/docs/source/examples/tutorial.ipynb)
 
 A comprehensive Python package for **supertropical algebra**, featuring tangible and ghost elements, matrix operations, and linear system solving using Cramer's rule.
 
@@ -27,16 +27,16 @@ A comprehensive Python package for **supertropical algebra**, featuring tangible
 ## 📦 Installation
 
 ```bash
-pip install supertropical-algebra
+pip install supertropicalpy
 ```
 
 Or install from source:
 
 ```bash
 
-git clone https://github.com/TetewHeroez/supertropical-algebra.git
+git clone https://github.com/TetewHeroez/supertropicalpy.git
 
-cd supertropical-algebra
+cd supertropicalpy
 
 pip install -e .
 
@@ -44,13 +44,13 @@ pip install -e .
 
 ## 📖 Documentation
 
-- Full documentation is available at: **[GitHub Pages](https://tetewhereoez.github.io/supertropical-algebra)**
+- Full documentation is available at: **[GitHub Pages](https://tetewhereoez.github.io/supertropicalpy)**
 
-- **[Theory Guide](https://tetewhereoez.github.io/supertropical-algebra/theory.html)**: Mathematical background on supertropical algebra
+- **[Theory Guide](https://tetewhereoez.github.io/supertropicalpy/theory.html)**: Mathematical background on supertropical algebra
 
-- **[Interactive Tutorial](https://tetewhereoez.github.io/supertropical-algebra/examples/tutorial.html)**: Jupyter notebook with executable examples
+- **[Interactive Tutorial](https://tetewhereoez.github.io/supertropicalpy/examples/tutorial.html)**: Jupyter notebook with executable examples
 
-- **[API Reference](https://tetewhereoez.github.io/supertropical-algebra/api/index.html)**: Complete API documentation
+- **[API Reference](https://tetewhereoez.github.io/supertropicalpy/api/index.html)**: Complete API documentation
 
 ## 🧪 Running Tests
 
@@ -157,8 +157,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-- **GitHub**: [https://github.com/TetewHeroez/supertropical-algebra](https://github.com/TetewHeroez/supertropical-algebra)
+- **GitHub**: [https://github.com/TetewHeroez/supertropicalpy](https://github.com/TetewHeroez/supertropicalpy)
 
-- **Issues**: [https://github.com/TetewHeroez/supertropical-algebra/issues](https://github.com/TetewHeroez/supertropical-algebra/issues)
+- **Issues**: [https://github.com/TetewHeroez/supertropicalpy/issues](https://github.com/TetewHeroez/supertropicalpy/issues)
 
-- **Documentation**: [https://tetewhereoez.github.io/supertropical-algebra](https://tetewhereoez.github.io/supertropical-algebra)
+- **Documentation**: [https://tetewhereoez.github.io/supertropicalpy](https://tetewhereoez.github.io/supertropicalpy)

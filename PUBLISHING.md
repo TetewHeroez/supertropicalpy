@@ -1,6 +1,6 @@
 # Publishing to PyPI - Setup Guide
 
-This guide explains how to publish `supertropical-algebra` to PyPI (Python Package Index).
+This guide explains how to publish `SupertropicalPy` to PyPI (Python Package Index).
 
 ## Prerequisites
 
@@ -18,9 +18,9 @@ This is the **modern, secure way** - no API tokens needed!
 3. Click "Add a new pending publisher"
 4. Fill in:
 
-   - **PyPI Project Name**: `supertropical-algebra`
+   - **PyPI Project Name**: `SupertropicalPy`
    - **Owner**: `TetewHeroez`
-   - **Repository name**: `supertropical-algebra`
+   - **Repository name**: `SupertropicalPy`
    - **Workflow name**: `publish-to-pypi.yml`
    - **Environment name**: `pypi`
 
@@ -28,7 +28,7 @@ This is the **modern, secure way** - no API tokens needed!
 
 ### 2. Create GitHub Environment
 
-1. Go to your GitHub repo: https://github.com/TetewHeroez/supertropical-algebra
+1. Go to your GitHub repo: https://github.com/TetewHeroez/SupertropicalPy
 2. Settings → Environments → "New environment"
 3. Name: `pypi`
 4. (Optional) Add protection rules:
@@ -42,7 +42,7 @@ This is the **modern, secure way** - no API tokens needed!
 
 #### Option A: Via GitHub UI (Recommended)
 
-1. Go to https://github.com/TetewHeroez/supertropical-algebra/releases
+1. Go to https://github.com/TetewHeroez/SupertropicalPy/releases
 2. Click "Create a new release"
 3. Click "Choose a tag" → Type `v0.1.0` → "Create new tag"
 4. Release title: `v0.1.0 - Initial Release`
@@ -51,7 +51,7 @@ This is the **modern, secure way** - no API tokens needed!
    ```
    ## 🎉 First Release!
 
-   Initial release of supertropical-algebra package.
+   Initial release of SupertropicalPy package.
 
    ### Features
    - ✅ Supertropical elements (tangible and ghost)
@@ -77,16 +77,16 @@ Then create release on GitHub from the tag.
 After creating the release:
 
 1. GitHub Actions will automatically run
-2. Check https://github.com/TetewHeroez/supertropical-algebra/actions
+2. Check https://github.com/TetewHeroez/SupertropicalPy/actions
 3. Wait for "Publish to PyPI" workflow to complete (green ✓)
-4. Your package will be available at: https://pypi.org/project/supertropical-algebra/
+4. Your package will be available at: https://pypi.org/project/SupertropicalPy/
 
 ### 5. Install Your Package
 
 After successful publish:
 
 ```bash
-pip install supertropical-algebra
+pip install SupertropicalPy
 ```
 
 ## Future Updates
@@ -103,14 +103,14 @@ To publish new versions:
 
    ```bash
    git add pyproject.toml
-   git commit -m "Bump version to 0.1.1"
+   git commit -m "Bump version to 0.1.2"
    git push
    ```
 
 3. Create new release:
 
    ```bash
-   git tag -a v0.1.1 -m "Release version 0.1.1"
+   git tag -a v0.1.1 -m "Release version 0.1.2"
    git push origin v0.1.1
    ```
 
@@ -173,5 +173,5 @@ If you prefer manual publishing:
 Your package will be installable worldwide via:
 
 ```bash
-pip install supertropical-algebra
+pip install SupertropicalPy
 ```

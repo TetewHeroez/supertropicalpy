@@ -1,7 +1,7 @@
 Getting Started
 ===============
 
-This guide will help you install and set up the ``supertropical-algebra`` package.
+This guide will help you install and set up the ``supertropicalpy`` package.
 
 Installation
 ------------
@@ -13,19 +13,19 @@ Install the latest stable version from PyPI using pip:
 
 .. code-block:: bash
 
-   pip install supertropical-algebra
+   pip install supertropicalpy
 
 To install a specific version:
 
 .. code-block:: bash
 
-   pip install supertropical-algebra==0.1.1
+   pip install supertropicalpy==0.1.2
 
 To upgrade to the latest version:
 
 .. code-block:: bash
 
-   pip install --upgrade supertropical-algebra
+   pip install --upgrade supertropicalpy
 
 Offline Installation
 ^^^^^^^^^^^^^^^^^^^^
@@ -37,7 +37,7 @@ If you need to install the package offline (without internet access), follow the
 .. code-block:: bash
 
    # Download the wheel file
-   pip download supertropical-algebra -d ./packages
+   pip download supertropicalpy -d ./packages
 
 **Step 2: Transfer files**
 
@@ -48,7 +48,7 @@ Copy the ``packages`` directory to your offline machine.
 .. code-block:: bash
 
    # Install from the downloaded wheel
-   pip install --no-index --find-links=./packages supertropical-algebra
+   pip install --no-index --find-links=./packages supertropicalpy
 
 Development Installation
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -58,8 +58,8 @@ To install the package in development mode from source:
 .. code-block:: bash
 
    # Clone the repository
-   git clone https://github.com/TetewHeroez/supertropical-algebra.git
-   cd supertropical-algebra
+   git clone https://github.com/TetewHeroez/supertropicalpy.git
+   cd supertropicalpy
 
    # Install in editable mode
    pip install -e .
@@ -152,7 +152,7 @@ The package supports multiple import styles for flexibility:
 Requirements
 ------------
 
-- Python ≥ 3.7
+- Python ≥ 3.9
 - NumPy ≥ 1.20.0
 
 Optional dependencies for documentation:
@@ -180,7 +180,7 @@ Make sure the package is installed:
 
    pip list | grep supertropical
 
-If not found, install it with ``pip install supertropical-algebra``.
+If not found, install it with ``pip install supertropicalpy``.
 
 **NumPy version conflict**
 
@@ -196,11 +196,11 @@ Use the ``--user`` flag:
 
 .. code-block:: bash
 
-   pip install --user supertropical-algebra
+   pip install --user supertropicalpy
 
 Support
 -------
 
-- **GitHub Issues**: https://github.com/TetewHeroez/supertropical-algebra/issues
-- **Documentation**: https://tetewheroez.github.io/supertropical-algebra/
-- **PyPI Package**: https://pypi.org/project/supertropical-algebra/
+- **GitHub Issues**: https://github.com/TetewHeroez/supertropicalpy/issues
+- **Documentation**: https://tetewheroez.github.io/supertropicalpy/
+- **PyPI Package**: https://pypi.org/project/supertropicalpy/

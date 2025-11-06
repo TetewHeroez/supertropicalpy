@@ -1,3 +1,3 @@
 """
-Test suite for supertropical algebra package.
+Test suite for the SupertropicalPy package.
 """

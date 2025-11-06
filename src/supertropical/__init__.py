@@ -1,8 +1,8 @@
 """
-Supertropical Algebra Package
-==============================
+SupertropicalPy
+================
 
-A Python package for working with supertropical algebra, featuring:
+A Python package (SupertropicalPy) for working with supertropical algebra, featuring:
 - Tangible and ghost elements
 - Matrix operations over supertropical semiring
 - Linear system solving using Cramer's rule
@@ -31,7 +31,7 @@ from .matrix import SupertropicalMatrix
 Element = SupertropicalElement
 Matrix = SupertropicalMatrix
 
-__version__ = "0.1.0"
+__version__ = "0.1.2"
 __all__ = [
     "SupertropicalElement", 
     "SupertropicalMatrix",

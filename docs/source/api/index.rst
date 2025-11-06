@@ -1,7 +1,7 @@
 API Reference
 =============
 
-This section contains the complete API documentation for the supertropical algebra package.
+This section contains the complete API documentation for the SupertropicalPy package.
 
 Core Classes
 ------------

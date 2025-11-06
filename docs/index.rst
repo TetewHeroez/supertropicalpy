@@ -1,10 +1,10 @@
 .. supertropical documentation master file
 
 ============================
-Welcome to Supertropical!
+Welcome to SupertropicalPy!
 ============================
 
-This is a Python package for supertropical algebra
+This is the SupertropicalPy package for supertropical algebra
 that implements tangible and ghost elements.
 
 .. toctree::
