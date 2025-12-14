@@ -45,9 +45,9 @@ docs = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/TetewHeroez/supertropicalpy"
-Documentation = "https://tetewhereoez.github.io/supertropicalpy"
-Repository = "https://github.com/TetewHeroez/supertropicalpy"
+Homepage = "https://github.com/KlinikAA/supertropicalpy"
+Documentation = "https://klinikaa.github.io/supertropicalpy"
+Repository = "https://github.com/KlinikAA/supertropicalpy"
 
 # Setuptools-specific configuration
 [tool.setuptools.packages.find]

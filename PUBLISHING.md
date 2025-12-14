@@ -19,7 +19,7 @@ This is the **modern, secure way** - no API tokens needed!
 4. Fill in:
 
    - **PyPI Project Name**: `SupertropicalPy`
-   - **Owner**: `TetewHeroez`
+   - **Owner**: `KlinikAA`
    - **Repository name**: `SupertropicalPy`
    - **Workflow name**: `publish-to-pypi.yml`
    - **Environment name**: `pypi`
@@ -28,7 +28,7 @@ This is the **modern, secure way** - no API tokens needed!
 
 ### 2. Create GitHub Environment
 
-1. Go to your GitHub repo: https://github.com/TetewHeroez/SupertropicalPy
+1. Go to your GitHub repo: https://github.com/KlinikAA/SupertropicalPy
 2. Settings → Environments → "New environment"
 3. Name: `pypi`
 4. (Optional) Add protection rules:
@@ -42,7 +42,7 @@ This is the **modern, secure way** - no API tokens needed!
 
 #### Option A: Via GitHub UI (Recommended)
 
-1. Go to https://github.com/TetewHeroez/SupertropicalPy/releases
+1. Go to https://github.com/KlinikAA/SupertropicalPy/releases
 2. Click "Create a new release"
 3. Click "Choose a tag" → Type `v0.1.0` → "Create new tag"
 4. Release title: `v0.1.0 - Initial Release`
@@ -77,7 +77,7 @@ Then create release on GitHub from the tag.
 After creating the release:
 
 1. GitHub Actions will automatically run
-2. Check https://github.com/TetewHeroez/SupertropicalPy/actions
+2. Check https://github.com/KlinikAA/SupertropicalPy/actions
 3. Wait for "Publish to PyPI" workflow to complete (green ✓)
 4. Your package will be available at: https://pypi.org/project/SupertropicalPy/
 

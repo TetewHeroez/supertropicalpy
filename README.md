@@ -2,7 +2,7 @@
 
 [![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/TetewHeroez/supertropicalpy/blob/main/docs/source/examples/tutorial.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/KlinikAA/supertropicalpy/blob/main/docs/source/examples/tutorial.ipynb)
 
 A comprehensive Python package for **supertropical algebra**, featuring tangible and ghost elements, matrix operations, and linear system solving using Cramer's rule.
 
@@ -34,7 +34,7 @@ Or install from source:
 
 ```bash
 
-git clone https://github.com/TetewHeroez/supertropicalpy.git
+git clone https://github.com/KlinikAA/supertropicalpy.git
 
 cd supertropicalpy
 
@@ -44,13 +44,13 @@ pip install -e .
 
 ## 📖 Documentation
 
-- Full documentation is available at: **[GitHub Pages](https://tetewhereoez.github.io/supertropicalpy)**
+- Full documentation is available at: **[GitHub Pages](https://klinikaa.github.io/supertropicalpy)**
 
-- **[Theory Guide](https://tetewhereoez.github.io/supertropicalpy/theory.html)**: Mathematical background on supertropical algebra
+- **[Theory Guide](https://klinikaa.github.io/supertropicalpy/theory.html)**: Mathematical background on supertropical algebra
 
-- **[Interactive Tutorial](https://tetewhereoez.github.io/supertropicalpy/examples/tutorial.html)**: Jupyter notebook with executable examples
+- **[Interactive Tutorial](https://klinikaa.github.io/supertropicalpy/examples/tutorial.html)**: Jupyter notebook with executable examples
 
-- **[API Reference](https://tetewhereoez.github.io/supertropicalpy/api/index.html)**: Complete API documentation
+- **[API Reference](https://klinikaa.github.io/supertropicalpy/api/index.html)**: Complete API documentation
 
 ## 🧪 Running Tests
 
@@ -157,8 +157,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-- **GitHub**: [https://github.com/TetewHeroez/supertropicalpy](https://github.com/TetewHeroez/supertropicalpy)
+- **GitHub**: [https://github.com/KlinikAA/supertropicalpy](https://github.com/KlinikAA/supertropicalpy)
 
-- **Issues**: [https://github.com/TetewHeroez/supertropicalpy/issues](https://github.com/TetewHeroez/supertropicalpy/issues)
+- **Issues**: [https://github.com/KlinikAA/supertropicalpy/issues](https://github.com/KlinikAA/supertropicalpy/issues)
 
-- **Documentation**: [https://tetewhereoez.github.io/supertropicalpy](https://tetewhereoez.github.io/supertropicalpy)
+- **Documentation**: [https://klinikaa.github.io/supertropicalpy](https://klinikaa.github.io/supertropicalpy)

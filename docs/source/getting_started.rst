@@ -58,7 +58,7 @@ To install the package in development mode from source:
 .. code-block:: bash
 
    # Clone the repository
-   git clone https://github.com/TetewHeroez/supertropicalpy.git
+   git clone https://github.com/KlinikAA/supertropicalpy.git
    cd supertropicalpy
 
    # Install in editable mode
@@ -201,6 +201,6 @@ Use the ``--user`` flag:
 Support
 -------
 
-- **GitHub Issues**: https://github.com/TetewHeroez/supertropicalpy/issues
-- **Documentation**: https://tetewheroez.github.io/supertropicalpy/
+- **GitHub Issues**: https://github.com/KlinikAA/supertropicalpy/issues
+- **Documentation**: https://klinikaa.github.io/supertropicalpy/
 - **PyPI Package**: https://pypi.org/project/supertropicalpy/
