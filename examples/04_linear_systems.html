@@ -1,0 +1,680 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4. Linear Systems over Supertropical Algebra &mdash; SupertropicalPy 0.1.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ea06c36c" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=92734c54"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+      <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="API Reference" href="../api/index.html" />
+    <link rel="prev" title="3. Supertropical Matrices" href="03_matrices.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SupertropicalPy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory.html">What is Supertropical Algebra?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interactive Examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="01_supertropical_elements.html">1. Supertropical Algebra: Elements &amp; Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_ghost_surpasses.html">2. Ghost Surpasses Relation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_matrices.html">3. Supertropical Matrices</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Linear Systems over Supertropical Algebra</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#4.1-System-Definition">4.1 System Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#4.2-Cramer's-Rule">4.2 Cramer’s Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#4.3-Example:-2×2-System">4.3 Example: 2×2 System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#4.4-Verification">4.4 Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#4.5-Example:-3×3-System">4.5 Example: 3×3 System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#4.6-Step-by-Step-Solution">4.6 Step-by-Step Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#4.7-Singular-Matrix-Example">4.7 Singular Matrix Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#4.8-Solving-with-solve():">4.8 Solving with <code class="docutils literal notranslate"><span class="pre">solve()</span></code>:</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SupertropicalPy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">4. Linear Systems over Supertropical Algebra</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/examples/04_linear_systems.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div style="text-align: center; margin: 10px 0;">
+    <a href="https://colab.research.google.com/github/KlinikAA/supertropicalpy/blob/main/docs/source/examples/04_linear_systems.ipynb"
+       target="_blank"
+       style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background-color: #f5f5f5; color: #333; text-decoration: none; border: 1px solid #ddd; border-radius: 4px; font-size: 14px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Google_Colab_pic.png/250px-Google_Colab_pic.png"
+             alt="Colab"
+             style="height: 20px;">
+        Open in Google Colab
+    </a>
+</div><section id="4.-Linear-Systems-over-Supertropical-Algebra">
+<h1>4. Linear Systems over Supertropical Algebra<a class="headerlink" href="#4.-Linear-Systems-over-Supertropical-Algebra" title="Link to this heading"></a></h1>
+<p>This notebook demonstrates <strong>solving linear systems</strong> using Cramer’s rule in supertropical algebra.</p>
+<p><strong>Theory reference</strong>: See <code class="docutils literal notranslate"><span class="pre">theory.rst</span></code> Section 4</p>
+<section id="Setup">
+<h2>Setup<a class="headerlink" href="#Setup" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install package (for Google Colab)</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-q<span class="w"> </span>supertropicalpy
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import package</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">supertropical</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">suptrop</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="4.1-System-Definition">
+<h2>4.1 System Definition<a class="headerlink" href="#4.1-System-Definition" title="Link to this heading"></a></h2>
+<p>In supertropical algebra, we solve:</p>
+<div class="math notranslate nohighlight">
+\[A \otimes x \vDash b\]</div>
+<p>using the <strong>ghost surpasses</strong> relation <span class="math notranslate nohighlight">\(\vDash\)</span> instead of equality.</p>
+<p><strong>Types</strong>:</p>
+<ul class="simple">
+<li><p><strong>Non-homogeneous</strong>: <span class="math notranslate nohighlight">\(A \otimes x \vDash b\)</span> where <span class="math notranslate nohighlight">\(b \neq \mathcal{E}\)</span></p></li>
+<li><p><strong>Homogeneous</strong>: <span class="math notranslate nohighlight">\(A \otimes x \vDash \mathcal{E}\)</span> (zero vector)</p></li>
+</ul>
+</section>
+<section id="4.2-Cramer's-Rule">
+<h2>4.2 Cramer’s Rule<a class="headerlink" href="#4.2-Cramer's-Rule" title="Link to this heading"></a></h2>
+<p><strong>Solution method</strong>:</p>
+<div class="math notranslate nohighlight">
+\[x = \text{adj}(A) \otimes b \otimes (\text{per}(A))^{-1}\]</div>
+<p><strong>Condition</strong>: System has <strong>unique solution</strong> if <span class="math notranslate nohighlight">\(\text{per}(A)\)</span> is <strong>tangible</strong> (not ghost).</p>
+</section>
+<section id="4.3-Example:-2×2-System">
+<h2>4.3 Example: 2×2 System<a class="headerlink" href="#4.3-Example:-2×2-System" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;📐 Solving: A ⊗ x = b&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># Define system</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">5</span><span class="p">],</span>
+                    <span class="p">[</span><span class="mi">4</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matrix A:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Vector b:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+📐 Solving: A ⊗ x = b
+==================================================
+Matrix A:
+[
+  [2.0  1.0]
+  [1.0  3.0]
+]
+
+Vector b:
+[
+  [5.0]
+  [4.0]
+]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if system has unique solution</span>
+<span class="n">perm</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">permanent</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Permanent: </span><span class="si">{</span><span class="n">perm</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Is tangible? </span><span class="si">{</span><span class="n">perm</span><span class="o">.</span><span class="n">is_tangible</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Has unique solution? </span><span class="si">{</span><span class="n">perm</span><span class="o">.</span><span class="n">is_tangible</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Permanent: 5.0
+Is tangible? True
+Has unique solution? True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solve using Cramer&#39;s rule</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">✅ Solution x:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+✅ Solution x:
+[
+  [ 3.0]
+  [1.0v]
+]
+</pre></div></div>
+</div>
+</section>
+<section id="4.4-Verification">
+<h2>4.4 Verification<a class="headerlink" href="#4.4-Verification" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verify: A ⊗ x should ghost-surpass b</span>
+<span class="n">verification</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">x</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A ⊗ x:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">verification</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Original b:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Check if A⊗x = b:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">verification</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="n">ax_val</span> <span class="o">=</span> <span class="n">verification</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">b_val</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  [</span><span class="si">{</span><span class="n">ax_val</span><span class="si">}</span><span class="s2">] = [</span><span class="si">{</span><span class="n">b_val</span><span class="si">}</span><span class="s2">]: </span><span class="si">{</span><span class="n">ax_val</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">b_val</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">✓ Solution verified!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+A ⊗ x:
+[
+  [5.0v]
+  [4.0v]
+]
+
+Original b:
+[
+  [5.0]
+  [4.0]
+]
+
+Check if A⊗x = b:
+  [5.0ν] = [5.0]: False
+  [4.0ν] = [4.0]: False
+
+✓ Solution verified!
+</pre></div></div>
+</div>
+</section>
+<section id="4.5-Example:-3×3-System">
+<h2>4.5 Example: 3×3 System<a class="headerlink" href="#4.5-Example:-3×3-System" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;📐 Larger System (3×3):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># 3×3 system</span>
+<span class="n">A3</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+                     <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+
+<span class="n">b3</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">5</span><span class="p">],</span>
+                     <span class="p">[</span><span class="mi">4</span><span class="p">],</span>
+                     <span class="p">[</span><span class="mi">6</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matrix A:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Vector b:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+📐 Larger System (3×3):
+==================================================
+Matrix A:
+[
+  [1.0  2.0  0.0]
+  [0.0  1.0  2.0]
+  [2.0  0.0  1.0]
+]
+
+Vector b:
+[
+  [5.0]
+  [4.0]
+  [6.0]
+]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check nonsingularity</span>
+<span class="n">perm3</span> <span class="o">=</span> <span class="n">A3</span><span class="o">.</span><span class="n">permanent</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Permanent: </span><span class="si">{</span><span class="n">perm3</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Is tangible? </span><span class="si">{</span><span class="n">perm3</span><span class="o">.</span><span class="n">is_tangible</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">perm3</span><span class="o">.</span><span class="n">is_tangible</span><span class="p">():</span>
+    <span class="n">x3</span> <span class="o">=</span> <span class="n">A3</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">b3</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">✅ Solution:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span>
+
+    <span class="c1"># Verify</span>
+    <span class="n">verification</span> <span class="o">=</span> <span class="n">A3</span> <span class="o">*</span> <span class="n">x3</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Verification A ⊗ x:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">verification</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">❌ Matrix is singular (no unique solution)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Permanent: 6.0ν
+Is tangible? False
+
+❌ Matrix is singular (no unique solution)
+</pre></div></div>
+</div>
+</section>
+<section id="4.6-Step-by-Step-Solution">
+<h2>4.6 Step-by-Step Solution<a class="headerlink" href="#4.6-Step-by-Step-Solution" title="Link to this heading"></a></h2>
+<p>Let’s solve a system manually to understand Cramer’s rule:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;📝 Manual Solution Steps:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">5</span><span class="p">],</span>
+                    <span class="p">[</span><span class="mi">4</span><span class="p">]])</span>
+
+<span class="c1"># Step 1: Calculate permanent</span>
+<span class="n">perm</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">permanent</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Step 1: per(A) = </span><span class="si">{</span><span class="n">perm</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Step 2: Calculate inverse of permanent</span>
+<span class="n">perm_inv</span> <span class="o">=</span> <span class="o">-</span><span class="n">perm</span><span class="o">.</span><span class="n">value</span>  <span class="c1"># a^(-1) = -a in max-plus</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Step 2: per(A)^(-1) = -</span><span class="si">{</span><span class="n">perm</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">perm_inv</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Step 3: Calculate adjoint</span>
+<span class="n">adj</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Step 3: adj(A) =&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">adj</span><span class="p">)</span>
+
+<span class="c1"># Step 4: Solution x = adj(A) ⊗ b ⊗ per(A)^(-1)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Step 4: x = adj(A) ⊗ b ⊗ per(A)^(-1)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+📝 Manual Solution Steps:
+==================================================
+Step 1: per(A) = 5.0
+Step 2: per(A)^(-1) = -5.0 = -5.0
+
+Step 3: adj(A) =
+[
+  [3.0  1.0]
+  [1.0  2.0]
+]
+
+Step 4: x = adj(A) ⊗ b ⊗ per(A)^(-1)
+[
+  [ 3.0]
+  [1.0v]
+]
+</pre></div></div>
+</div>
+</section>
+<section id="4.7-Singular-Matrix-Example">
+<h2>4.7 Singular Matrix Example<a class="headerlink" href="#4.7-Singular-Matrix-Example" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;⚠️ Singular Matrix Example:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># Create a singular matrix (permanent is ghost)</span>
+<span class="n">A_sing</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                         <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matrix A (singular):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A_sing</span><span class="p">)</span>
+
+<span class="n">perm_sing</span> <span class="o">=</span> <span class="n">A_sing</span><span class="o">.</span><span class="n">permanent</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Permanent: </span><span class="si">{</span><span class="n">perm_sing</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Is tangible? </span><span class="si">{</span><span class="n">perm_sing</span><span class="o">.</span><span class="n">is_tangible</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Is ghost? </span><span class="si">{</span><span class="n">perm_sing</span><span class="o">.</span><span class="n">is_ghost</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Manual calculation</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Manual: per(A) = (1⊗1) ⊕ (1⊗1) = 2 ⊕ 2 = 2ν (ghost!)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Therefore, the matrix is SINGULAR.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+⚠️ Singular Matrix Example:
+==================================================
+Matrix A (singular):
+[
+  [1.0  1.0]
+  [1.0  1.0]
+]
+
+Permanent: 2.0ν
+Is tangible? False
+Is ghost? True
+
+Manual: per(A) = (1⊗1) ⊕ (1⊗1) = 2 ⊕ 2 = 2ν (ghost!)
+Therefore, the matrix is SINGULAR.
+</pre></div></div>
+</div>
+</section>
+<section id="Summary">
+<h2>Summary<a class="headerlink" href="#Summary" title="Link to this heading"></a></h2>
+<p>You’ve learned:</p>
+<ul class="simple">
+<li><p>✅ Linear system definition <span class="math notranslate nohighlight">\(A \otimes x \vDash b\)</span></p></li>
+<li><p>✅ Cramer’s rule for solving systems</p></li>
+<li><p>✅ Checking matrix nonsingularity (tangible permanent)</p></li>
+<li><p>✅ Solving 2×2 and 3×3 systems</p></li>
+<li><p>✅ Verifying solutions with ghost surpasses relation</p></li>
+<li><p>✅ Understanding singular matrices</p></li>
+</ul>
+<p><strong>Congratulations!</strong> You’ve completed all supertropical algebra tutorials! 🎉</p>
+<p><strong>Further reading</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">advanced.rst</span></code> - Advanced features</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">api/index</span></code> - Complete API reference</p></li>
+</ul>
+</section>
+<section id="4.8-Solving-with-solve():">
+<h2>4.8 Solving with <code class="docutils literal notranslate"><span class="pre">solve()</span></code>:<a class="headerlink" href="#4.8-Solving-with-solve():" title="Link to this heading"></a></h2>
+<p>We now solve two 3x3 systems from the book using the built-in <code class="docutils literal notranslate"><span class="pre">Matrix.solve(b)</span></code> method (Cramer’s rule implementation).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Helper: verify A * x ghost-surpasses b (A*x |= b)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">verify_ghost_surpasses</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">computed</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">x</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A * x =&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">computed</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">b =&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">ok</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">computed</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">computed</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="n">bv</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">ghost_surpasses</span><span class="p">(</span><span class="n">bv</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Row </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">ax</span><span class="si">}</span><span class="s2"> ghost_surpasses </span><span class="si">{</span><span class="n">bv</span><span class="si">}</span><span class="s2"> ? </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">ok</span> <span class="o">=</span> <span class="n">ok</span> <span class="ow">and</span> <span class="n">s</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Verified:&quot;</span><span class="p">,</span> <span class="n">ok</span><span class="p">)</span>
+
+<span class="c1"># (a) Book example 4.4.3(a)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Example 4.4.3(a)&quot;</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+                    <span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">],</span>
+                    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">]])</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span>
+                    <span class="p">[</span><span class="o">-</span><span class="mi">6</span><span class="p">],</span>
+                    <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]])</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">verify_ghost_surpasses</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Example 4.4.3(a)
+x =
+[
+  [ -5.0]
+  [-24.0]
+  [ -3.0]
+]
+A * x =
+[
+  [ 1.0]
+  [-6.0]
+  [-3.0]
+]
+
+b =
+[
+  [ 1.0]
+  [-6.0]
+  [-3.0]
+]
+Row 1: 1.0 ghost_surpasses 1.0 ? False
+Row 2: -6.0 ghost_surpasses -6.0 ? False
+Row 3: -3.0 ghost_surpasses -3.0 ? False
+Verified: False
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># (b) Book example 4.4.3(b)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Example 4.4.3(b)&quot;</span><span class="p">)</span>
+<span class="c1"># Reuse the same A</span>
+<span class="n">b2</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">2</span><span class="p">],</span>
+                     <span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                     <span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
+
+<span class="n">x2</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">b2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+
+<span class="n">verify_ghost_surpasses</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">b2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Example 4.4.3(b)
+x =
+[
+  [  1.0]
+  [-17.0]
+  [-2.0v]
+]
+A * x =
+[
+  [2.0v]
+  [1.0v]
+  [3.0v]
+]
+
+b =
+[
+  [2.0]
+  [1.0]
+  [3.0]
+]
+Row 1: 2.0ν ghost_surpasses 2.0 ? True
+Row 2: 1.0ν ghost_surpasses 1.0 ? True
+Row 3: 3.0ν ghost_surpasses 3.0 ? True
+Verified: True
+</pre></div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "KlinikAA/supertropicalpy",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./examples"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="03_matrices.html" class="btn btn-neutral float-left" title="3. Supertropical Matrices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../api/index.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Supertropical Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

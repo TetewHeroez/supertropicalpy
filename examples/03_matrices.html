@@ -1,0 +1,592 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3. Supertropical Matrices &mdash; SupertropicalPy 0.1.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ea06c36c" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=92734c54"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+      <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Linear Systems over Supertropical Algebra" href="04_linear_systems.html" />
+    <link rel="prev" title="2. Ghost Surpasses Relation" href="02_ghost_surpasses.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SupertropicalPy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory.html">What is Supertropical Algebra?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interactive Examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="01_supertropical_elements.html">1. Supertropical Algebra: Elements &amp; Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_ghost_surpasses.html">2. Ghost Surpasses Relation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Supertropical Matrices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#3.1-Creating-Matrices">3.1 Creating Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#3.2-Matrix-Addition">3.2 Matrix Addition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#3.3-Matrix-Multiplication">3.3 Matrix Multiplication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#3.4-Matrix-Transpose">3.4 Matrix Transpose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#3.5-Matrix-Power">3.5 Matrix Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#3.6-Identity-Matrix">3.6 Identity Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#3.7-Pseudo-Zero-Matrix">3.7 Pseudo-Zero Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#3.8-Permanent-(Supertropical-Determinant)">3.8 Permanent (Supertropical Determinant)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#3.9-Pseudo-Inverse">3.9 Pseudo-Inverse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="04_linear_systems.html">4. Linear Systems over Supertropical Algebra</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SupertropicalPy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">3. Supertropical Matrices</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/examples/03_matrices.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div style="text-align: center; margin: 10px 0;">
+    <a href="https://colab.research.google.com/github/KlinikAA/supertropicalpy/blob/main/docs/source/examples/03_matrices.ipynb"
+       target="_blank"
+       style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background-color: #f5f5f5; color: #333; text-decoration: none; border: 1px solid #ddd; border-radius: 4px; font-size: 14px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Google_Colab_pic.png/250px-Google_Colab_pic.png"
+             alt="Colab"
+             style="height: 20px;">
+        Open in Google Colab
+    </a>
+</div><section id="3.-Supertropical-Matrices">
+<h1>3. Supertropical Matrices<a class="headerlink" href="#3.-Supertropical-Matrices" title="Link to this heading"></a></h1>
+<p>This notebook demonstrates <strong>matrix operations</strong> in supertropical algebra.</p>
+<p><strong>Theory reference</strong>: See <code class="docutils literal notranslate"><span class="pre">theory.rst</span></code> Section 3</p>
+<section id="Setup">
+<h2>Setup<a class="headerlink" href="#Setup" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install package (for Google Colab)</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-q<span class="w"> </span>supertropicalpy
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import package</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">supertropical</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">suptrop</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="3.1-Creating-Matrices">
+<h2>3.1 Creating Matrices<a class="headerlink" href="#3.1-Creating-Matrices" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create 2×2 matrices</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+                    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matrix A:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Matrix B:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+
+<span class="c1"># Matrix with ghost elements</span>
+<span class="n">ghost</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">is_ghost</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span> <span class="n">ghost</span><span class="p">],</span>
+                    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Matrix C (with ghost 4ν):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Matrix A:
+[
+  [2.0  1.0]
+  [1.0  3.0]
+]
+
+Matrix B:
+[
+  [5.0  4.0]
+  [2.0  1.0]
+]
+
+Matrix C (with ghost 4ν):
+[
+  [5.0  4.0v]
+  [2.0   1.0]
+]
+</pre></div></div>
+</div>
+</section>
+<section id="3.2-Matrix-Addition">
+<h2>3.2 Matrix Addition<a class="headerlink" href="#3.2-Matrix-Addition" title="Link to this heading"></a></h2>
+<p><strong>Definition</strong>: <span class="math notranslate nohighlight">\([A \oplus B]_{i,j} = a_{i,j} \oplus b_{i,j}\)</span></p>
+<p>Element-wise maximum operation:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">B</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A ⊕ B (element-wise max):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="c1"># Manual verification</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Manual check:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  [0,0]: max(2, 5) = 5&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  [0,1]: max(1, 4) = 4&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  [1,0]: max(1, 2) = 2&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  [1,1]: max(3, 1) = 3&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[4]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> result = <span class="ansi-yellow-bg">A</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">+</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">B</span>
+<span class="ansi-green-fg">      2</span> <span style="color: rgb(0,135,0)">print</span>(<span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">A ⊕ B (element-wise max):</span><span class="ansi-yellow-fg">&#34;</span>)
+<span class="ansi-green-fg">      3</span> <span style="color: rgb(0,135,0)">print</span>(result)
+
+<span class="ansi-red-fg">TypeError</span>: unsupported operand type(s) for +: &#39;SupertropicalMatrix&#39; and &#39;SupertropicalMatrix&#39;
+</pre></div></div>
+</div>
+</section>
+<section id="3.3-Matrix-Multiplication">
+<h2>3.3 Matrix Multiplication<a class="headerlink" href="#3.3-Matrix-Multiplication" title="Link to this heading"></a></h2>
+<p><strong>Definition</strong>: <span class="math notranslate nohighlight">\([A \otimes B]_{i,j} = \bigoplus_{k=1}^{p} a_{i,k} \otimes b_{k,j}\)</span></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">B</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A ⊗ B:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="c1"># Manual calculation for [A⊗B]₁₁</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Manual calculation for [A⊗B]₁₁:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  = (a₁₁ ⊗ b₁₁) ⊕ (a₁₂ ⊗ b₂₁)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  = (2 ⊗ 5) ⊕ (1 ⊗ 2)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  = (2+5) ⊕ (1+2)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  = 7 ⊕ 3&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  = max(7, 3) = 7 ✓&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+A ⊗ B:
+[
+  [7.0  6.0]
+  [6.0  5.0]
+]
+
+Manual calculation for [A⊗B]₁₁:
+  = (a₁₁ ⊗ b₁₁) ⊕ (a₁₂ ⊗ b₂₁)
+  = (2 ⊗ 5) ⊕ (1 ⊗ 2)
+  = (2+5) ⊕ (1+2)
+  = 7 ⊕ 3
+  = max(7, 3) = 7 ✓
+</pre></div></div>
+</div>
+</section>
+<section id="3.4-Matrix-Transpose">
+<h2>3.4 Matrix Transpose<a class="headerlink" href="#3.4-Matrix-Transpose" title="Link to this heading"></a></h2>
+<p><strong>Definition</strong>: <span class="math notranslate nohighlight">\([A^T]_{i,j} = A_{j,i}\)</span></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A_T</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Original A:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">A^T (transpose):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A_T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Original A:
+[
+  [2.0  1.0]
+  [1.0  3.0]
+]
+
+A^T (transpose):
+[
+  [2.0  1.0]
+  [1.0  3.0]
+]
+</pre></div></div>
+</div>
+</section>
+<section id="3.5-Matrix-Power">
+<h2>3.5 Matrix Power<a class="headerlink" href="#3.5-Matrix-Power" title="Link to this heading"></a></h2>
+<p><strong>Definition</strong>: <span class="math notranslate nohighlight">\(A^k = A \otimes A \otimes \cdots \otimes A\)</span> (k times)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matrix A:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="n">A2</span> <span class="o">=</span> <span class="n">A</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">A^2 (A ⊗ A):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A2</span><span class="p">)</span>
+
+<span class="n">A3</span> <span class="o">=</span> <span class="n">A</span> <span class="o">**</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">A^3:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Matrix A:
+[
+  [2.0  1.0]
+  [1.0  3.0]
+]
+
+A^2 (A ⊗ A):
+[
+  [4.0  4.0]
+  [4.0  6.0]
+]
+
+A^3:
+[
+  [6.0  7.0]
+  [7.0  9.0]
+]
+</pre></div></div>
+</div>
+</section>
+<section id="3.6-Identity-Matrix">
+<h2>3.6 Identity Matrix<a class="headerlink" href="#3.6-Identity-Matrix" title="Link to this heading"></a></h2>
+<p><strong>Definition</strong>: <span class="math notranslate nohighlight">\([I]_{i,j} = \begin{cases} 0 &amp; \text{if } i = j \\ -\infty^\nu &amp; \text{if } i \neq j \end{cases}\)</span></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Matrix</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Identity matrix I₃:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+
+<span class="c1"># Verify: A ⊗ I = A</span>
+<span class="n">I2</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Matrix</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">I2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Verify A ⊗ I = A:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A ⊗ I:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Original A:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Identity matrix I₃:
+[
+  [  0.0  -infv  -infv]
+  [-infv    0.0  -infv]
+  [-infv  -infv    0.0]
+]
+
+Verify A ⊗ I = A:
+A ⊗ I:
+[
+  [2.0v  1.0v]
+  [1.0v  3.0v]
+]
+
+Original A:
+[
+  [2.0  1.0]
+  [1.0  3.0]
+]
+</pre></div></div>
+</div>
+</section>
+<section id="3.7-Pseudo-Zero-Matrix">
+<h2>3.7 Pseudo-Zero Matrix<a class="headerlink" href="#3.7-Pseudo-Zero-Matrix" title="Link to this heading"></a></h2>
+<p><strong>Definition</strong>: All entries are <span class="math notranslate nohighlight">\(-\infty^\nu\)</span> (ghost)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Z</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Matrix</span><span class="o">.</span><span class="n">pseudo_zero</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pseudo-zero matrix Z_G:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Pseudo-zero matrix Z_G:
+[
+  [-infv  -infv  -infv]
+  [-infv  -infv  -infv]
+  [-infv  -infv  -infv]
+]
+</pre></div></div>
+</div>
+</section>
+<section id="3.8-Permanent-(Supertropical-Determinant)">
+<h2>3.8 Permanent (Supertropical Determinant)<a class="headerlink" href="#3.8-Permanent-(Supertropical-Determinant)" title="Link to this heading"></a></h2>
+<p><strong>Definition</strong>: <span class="math notranslate nohighlight">\(\text{per}(A) = \bigoplus_{\sigma \in S_n} \bigotimes_{i=1}^{n} a_{i,\sigma(i)}\)</span></p>
+<ul class="simple">
+<li><p><strong>Tangible permanent</strong> → matrix is <strong>nonsingular</strong></p></li>
+<li><p><strong>Ghost permanent</strong> → matrix is <strong>singular</strong></p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+
+<span class="n">perm_A</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">permanent</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Matrix A:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Permanent: </span><span class="si">{</span><span class="n">perm_A</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Is tangible (nonsingular)? </span><span class="si">{</span><span class="n">perm_A</span><span class="o">.</span><span class="n">is_tangible</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Manual calculation for 2×2:</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Manual calculation:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  per(A) = (a₁₁ ⊗ a₂₂) ⊕ (a₁₂ ⊗ a₂₁)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;         = (2 ⊗ 3) ⊕ (1 ⊗ 1)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;         = (2+3) ⊕ (1+1)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;         = 5 ⊕ 2 = max(5, 2) = 5 ✓&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Matrix A:
+[
+  [2.0  1.0]
+  [1.0  3.0]
+]
+
+Permanent: 5.0
+Is tangible (nonsingular)? True
+
+Manual calculation:
+  per(A) = (a₁₁ ⊗ a₂₂) ⊕ (a₁₂ ⊗ a₂₁)
+         = (2 ⊗ 3) ⊕ (1 ⊗ 1)
+         = (2+3) ⊕ (1+1)
+         = 5 ⊕ 2 = max(5, 2) = 5 ✓
+</pre></div></div>
+</div>
+</section>
+<section id="3.9-Pseudo-Inverse">
+<h2>3.9 Pseudo-Inverse<a class="headerlink" href="#3.9-Pseudo-Inverse" title="Link to this heading"></a></h2>
+<p><strong>Definition</strong>: <span class="math notranslate nohighlight">\(A^\sharp = (\text{per}(A))^{-1} \otimes \text{adj}(A)\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(a^{-1} = -a\)</span> in max-plus algebra.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A_sharp</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">pseudo_inverse</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A^♯ (pseudo-inverse):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A_sharp</span><span class="p">)</span>
+
+<span class="c1"># Verify property: A ⊗ A^♯ ⊗ A = A</span>
+<span class="n">verification</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">A_sharp</span> <span class="o">*</span> <span class="n">A</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Verification A ⊗ A^♯ ⊗ A:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">verification</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Original A:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">✓ Property satisfied!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+A^♯ (pseudo-inverse):
+[
+  [-2.0  -4.0]
+  [-4.0  -3.0]
+]
+
+Verification A ⊗ A^♯ ⊗ A:
+[
+  [2.0v  1.0v]
+  [1.0v  3.0v]
+]
+
+Original A:
+[
+  [2.0  1.0]
+  [1.0  3.0]
+]
+
+✓ Property satisfied!
+</pre></div></div>
+</div>
+</section>
+<section id="Summary">
+<h2>Summary<a class="headerlink" href="#Summary" title="Link to this heading"></a></h2>
+<p>You’ve learned:</p>
+<ul class="simple">
+<li><p>✅ Creating matrices with tangible/ghost elements</p></li>
+<li><p>✅ Matrix addition (element-wise max)</p></li>
+<li><p>✅ Matrix multiplication (supertropical)</p></li>
+<li><p>✅ Transpose, power operations</p></li>
+<li><p>✅ Identity and pseudo-zero matrices</p></li>
+<li><p>✅ Permanent (supertropical determinant)</p></li>
+<li><p>✅ Pseudo-inverse calculation</p></li>
+</ul>
+<p><strong>Next</strong>: See <code class="docutils literal notranslate"><span class="pre">04_linear_systems.ipynb</span></code> for solving linear systems!</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "KlinikAA/supertropicalpy",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./examples"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="02_ghost_surpasses.html" class="btn btn-neutral float-left" title="2. Ghost Surpasses Relation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="04_linear_systems.html" class="btn btn-neutral float-right" title="4. Linear Systems over Supertropical Algebra" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Supertropical Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

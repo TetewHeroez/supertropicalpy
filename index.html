@@ -1,0 +1,304 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SupertropicalPy Documentation &mdash; SupertropicalPy 0.1.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=ea06c36c" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=92734c54"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+      <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting Started" href="getting_started.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            SupertropicalPy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory.html">What is Supertropical Algebra?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interactive Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples/01_supertropical_elements.html">1. Supertropical Algebra: Elements &amp; Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/02_ghost_surpasses.html">2. Ghost Surpasses Relation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/03_matrices.html">3. Supertropical Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/04_linear_systems.html">4. Linear Systems over Supertropical Algebra</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">SupertropicalPy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SupertropicalPy Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="supertropicalpy-documentation">
+<h1>SupertropicalPy Documentation<a class="headerlink" href="#supertropicalpy-documentation" title="Link to this heading"></a></h1>
+<p>Welcome to the <strong>SupertropicalPy</strong> package documentation!</p>
+<p>This package provides a complete implementation of supertropical algebra in Python,
+featuring tangible and ghost elements, matrix operations, and linear system solving.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Supertropical algebra</strong> is an algebraic structure where:</p>
+<ul class="simple">
+<li><p>Addition is defined as <span class="math notranslate nohighlight">\(a \oplus b = \max(a, b)\)</span></p></li>
+<li><p>Multiplication is defined as <span class="math notranslate nohighlight">\(a \odot b = a + b\)</span> (classical addition)</p></li>
+<li><p>Elements can be <strong>tangible</strong> (regular) or <strong>ghost</strong> (marked with ν)</p></li>
+</ul>
+</div>
+<section id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h2>
+<p>Installation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>supertropicalpy
+</pre></div>
+</div>
+<p>Basic usage (recommended - like numpy as np):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">supertropical</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">suptrop</span>
+
+<span class="c1"># Create elements</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>          <span class="c1"># Tangible: 5.0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>    <span class="c1"># Ghost: 3.0ν</span>
+
+<span class="c1"># Supertropical addition (max operation)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>  <span class="c1"># Result: 5.0ν (max is 5, becomes ghost)</span>
+
+<span class="c1"># Supertropical multiplication (classical addition)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>  <span class="c1"># Result: 8.0ν (5 + 3 = 8, is ghost)</span>
+
+<span class="c1"># Create and solve linear systems</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">]])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>  <span class="c1"># Solve Ax = b using Cramer&#39;s rule</span>
+</pre></div>
+</div>
+<p>Alternative import styles:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Direct import</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">supertropical</span><span class="w"> </span><span class="kn">import</span> <span class="n">Element</span><span class="p">,</span> <span class="n">Matrix</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Full names (also works)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">supertropical</span><span class="w"> </span><span class="kn">import</span> <span class="n">SupertropicalElement</span><span class="p">,</span> <span class="n">SupertropicalMatrix</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">SupertropicalElement</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Link to this heading"></a></h2>
+<p>✨ <strong>Core Features:</strong></p>
+<ul class="simple">
+<li><p><strong>Tangible and Ghost Elements</strong>: Full support for both element types</p></li>
+<li><p><strong>Arithmetic Operations</strong>: Supertropical addition ⊕ and multiplication ⊙</p></li>
+<li><p><strong>Matrix Operations</strong>: Matrix multiplication, permanent (supertropical determinant), adjoint</p></li>
+<li><p><strong>Advanced Matrix Operations</strong>: Transpose, power, identity, pseudo-zero, pseudo-inverse</p></li>
+<li><p><strong>Element Power</strong>: Support for positive and negative exponents</p></li>
+<li><p><strong>Ghost Surpasses Relation</strong>: Check ghost element relationships</p></li>
+<li><p><strong>Linear System Solver</strong>: Cramer’s rule implementation for solving Ax = b</p></li>
+<li><p><strong>Type Safety</strong>: Automatic coercion and type checking</p></li>
+<li><p><strong>NumPy Integration</strong>: Efficient array operations under the hood</p></li>
+</ul>
+</section>
+<section id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#verify-installation">Verify Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#quick-start">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#import-styles">Import Styles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#next-steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#support">Support</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="theory.html">What is Supertropical Algebra?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theory.html#supertropical-algebra">1. Supertropical Algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory.html#ghost-surpasses-relation">2. Ghost Surpasses Relation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory.html#supertropical-matrices">3. Supertropical Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory.html#linear-systems-over-supertropical-algebra">4. Linear Systems over Supertropical Algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory.html#references">References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory.html#implementation-notes">Implementation Notes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Interactive Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples/01_supertropical_elements.html">1. Supertropical Algebra: Elements &amp; Operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/01_supertropical_elements.html#Setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/01_supertropical_elements.html#1.1-Creating-Elements">1.1 Creating Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/01_supertropical_elements.html#1.2-Addition-(\oplus)">1.2 Addition (<span class="math notranslate nohighlight">\(\oplus\)</span>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/01_supertropical_elements.html#1.3-Multiplication-(\otimes)">1.3 Multiplication (<span class="math notranslate nohighlight">\(\otimes\)</span>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/01_supertropical_elements.html#1.4-Element-Power">1.4 Element Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/01_supertropical_elements.html#Summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples/02_ghost_surpasses.html">2. Ghost Surpasses Relation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/02_ghost_surpasses.html#Setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/02_ghost_surpasses.html#2.1-Definition">2.1 Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/02_ghost_surpasses.html#2.2-Example-from-Book">2.2 Example from Book</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/02_ghost_surpasses.html#2.3-Additional-Examples">2.3 Additional Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/02_ghost_surpasses.html#2.4-Verification-Example">2.4 Verification Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/02_ghost_surpasses.html#Summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples/03_matrices.html">3. Supertropical Matrices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/03_matrices.html#Setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/03_matrices.html#3.1-Creating-Matrices">3.1 Creating Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/03_matrices.html#3.2-Matrix-Addition">3.2 Matrix Addition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/03_matrices.html#3.3-Matrix-Multiplication">3.3 Matrix Multiplication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/03_matrices.html#3.4-Matrix-Transpose">3.4 Matrix Transpose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/03_matrices.html#3.5-Matrix-Power">3.5 Matrix Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/03_matrices.html#3.6-Identity-Matrix">3.6 Identity Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/03_matrices.html#3.7-Pseudo-Zero-Matrix">3.7 Pseudo-Zero Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/03_matrices.html#3.8-Permanent-(Supertropical-Determinant)">3.8 Permanent (Supertropical Determinant)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/03_matrices.html#3.9-Pseudo-Inverse">3.9 Pseudo-Inverse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/03_matrices.html#Summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples/04_linear_systems.html">4. Linear Systems over Supertropical Algebra</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/04_linear_systems.html#Setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/04_linear_systems.html#4.1-System-Definition">4.1 System Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/04_linear_systems.html#4.2-Cramer's-Rule">4.2 Cramer’s Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/04_linear_systems.html#4.3-Example:-2×2-System">4.3 Example: 2×2 System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/04_linear_systems.html#4.4-Verification">4.4 Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/04_linear_systems.html#4.5-Example:-3×3-System">4.5 Example: 3×3 System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/04_linear_systems.html#4.6-Step-by-Step-Solution">4.6 Step-by-Step Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/04_linear_systems.html#4.7-Singular-Matrix-Example">4.7 Singular Matrix Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/04_linear_systems.html#Summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/04_linear_systems.html#4.8-Solving-with-solve():">4.8 Solving with <code class="docutils literal notranslate"><span class="pre">solve()</span></code>:</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#core-classes">Core Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#quick-reference">Quick Reference</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "KlinikAA/supertropicalpy",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="getting_started.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Supertropical Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

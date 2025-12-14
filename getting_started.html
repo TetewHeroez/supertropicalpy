@@ -1,0 +1,329 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Started &mdash; SupertropicalPy 0.1.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=ea06c36c" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=92734c54"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+      <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="What is Supertropical Algebra?" href="theory.html" />
+    <link rel="prev" title="SupertropicalPy Documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            SupertropicalPy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#online-installation-pypi">Online Installation (PyPI)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#offline-installation">Offline Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#development-installation">Development Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#verify-installation">Verify Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quick-start">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#import-styles">Import Styles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#support">Support</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="theory.html">What is Supertropical Algebra?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interactive Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples/01_supertropical_elements.html">1. Supertropical Algebra: Elements &amp; Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/02_ghost_surpasses.html">2. Ghost Surpasses Relation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/03_matrices.html">3. Supertropical Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/04_linear_systems.html">4. Linear Systems over Supertropical Algebra</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SupertropicalPy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Getting Started</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/getting_started.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h1>
+<p>This guide will help you install and set up the <code class="docutils literal notranslate"><span class="pre">supertropicalpy</span></code> package.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<section id="online-installation-pypi">
+<h3>Online Installation (PyPI)<a class="headerlink" href="#online-installation-pypi" title="Link to this heading"></a></h3>
+<p>Install the latest stable version from PyPI using pip:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>supertropicalpy
+</pre></div>
+</div>
+<p>To install a specific version:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">supertropicalpy</span><span class="o">==</span><span class="m">0</span>.1.2
+</pre></div>
+</div>
+<p>To upgrade to the latest version:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>supertropicalpy
+</pre></div>
+</div>
+</section>
+<section id="offline-installation">
+<h3>Offline Installation<a class="headerlink" href="#offline-installation" title="Link to this heading"></a></h3>
+<p>If you need to install the package offline (without internet access), follow these steps:</p>
+<p><strong>Step 1: Download the package</strong> (on a machine with internet)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download the wheel file</span>
+pip<span class="w"> </span>download<span class="w"> </span>supertropicalpy<span class="w"> </span>-d<span class="w"> </span>./packages
+</pre></div>
+</div>
+<p><strong>Step 2: Transfer files</strong></p>
+<p>Copy the <code class="docutils literal notranslate"><span class="pre">packages</span></code> directory to your offline machine.</p>
+<p><strong>Step 3: Install offline</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install from the downloaded wheel</span>
+pip<span class="w"> </span>install<span class="w"> </span>--no-index<span class="w"> </span>--find-links<span class="o">=</span>./packages<span class="w"> </span>supertropicalpy
+</pre></div>
+</div>
+</section>
+<section id="development-installation">
+<h3>Development Installation<a class="headerlink" href="#development-installation" title="Link to this heading"></a></h3>
+<p>To install the package in development mode from source:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clone the repository</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/KlinikAA/supertropicalpy.git
+<span class="nb">cd</span><span class="w"> </span>supertropicalpy
+
+<span class="c1"># Install in editable mode</span>
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+
+<span class="c1"># Or with development dependencies</span>
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[dev]&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="verify-installation">
+<h2>Verify Installation<a class="headerlink" href="#verify-installation" title="Link to this heading"></a></h2>
+<p>After installation, verify that the package is working correctly:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">supertropical</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">suptrop</span>
+
+<span class="c1"># Create a simple element</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Test addition</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2"> ⊕ </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you see output like <code class="docutils literal notranslate"><span class="pre">5.0</span> <span class="pre">⊕</span> <span class="pre">3.0</span> <span class="pre">=</span> <span class="pre">5.0</span></code>, the installation was successful!</p>
+</section>
+<section id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h2>
+<p>Here’s a minimal example to get you started:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">supertropical</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">suptrop</span>
+
+<span class="c1"># Create tangible and ghost elements</span>
+<span class="n">tangible</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ghost</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">is_ghost</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tangible: </span><span class="si">{</span><span class="n">tangible</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>     <span class="c1"># 5.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ghost: </span><span class="si">{</span><span class="n">ghost</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>            <span class="c1"># 5.0ν</span>
+
+<span class="c1"># Supertropical operations</span>
+<span class="n">sum_result</span> <span class="o">=</span> <span class="n">tangible</span> <span class="o">+</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>   <span class="c1"># 5 ⊕ 3 = 5</span>
+<span class="n">prod_result</span> <span class="o">=</span> <span class="n">tangible</span> <span class="o">*</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># 5 ⊗ 2 = 7</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Addition: </span><span class="si">{</span><span class="n">sum_result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Multiplication: </span><span class="si">{</span><span class="n">prod_result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Matrix operations</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">]])</span>
+
+<span class="c1"># Solve linear system A ⊗ x ⊨ b</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Solution:</span><span class="se">\n</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="import-styles">
+<h2>Import Styles<a class="headerlink" href="#import-styles" title="Link to this heading"></a></h2>
+<p>The package supports multiple import styles for flexibility:</p>
+<p><strong>Recommended (NumPy-style)</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">supertropical</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">suptrop</span>
+
+<span class="n">element</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">matrix</span> <span class="o">=</span> <span class="n">suptrop</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p><strong>Direct imports</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">supertropical</span><span class="w"> </span><span class="kn">import</span> <span class="n">Element</span><span class="p">,</span> <span class="n">Matrix</span>
+
+<span class="n">element</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">matrix</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p><strong>Full class names</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">supertropical</span><span class="w"> </span><span class="kn">import</span> <span class="n">SupertropicalElement</span><span class="p">,</span> <span class="n">SupertropicalMatrix</span>
+
+<span class="n">element</span> <span class="o">=</span> <span class="n">SupertropicalElement</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">matrix</span> <span class="o">=</span> <span class="n">SupertropicalMatrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+</pre></div>
+</div>
+</section>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Python ≥ 3.9</p></li>
+<li><p>NumPy ≥ 1.20.0</p></li>
+</ul>
+<p>Optional dependencies for documentation:</p>
+<ul class="simple">
+<li><p>Sphinx</p></li>
+<li><p>nbsphinx</p></li>
+<li><p>sphinx-rtd-theme</p></li>
+</ul>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="theory.html"><span class="doc">What is Supertropical Algebra?</span></a> - Learn the mathematical theory with complete examples</p></li>
+<li><p><a class="reference internal" href="examples/01_supertropical_elements.html"><span class="doc">1. Supertropical Algebra: Elements &amp; Operations</span></a> - Interactive element operations</p></li>
+<li><p><a class="reference internal" href="examples/03_matrices.html"><span class="doc">3. Supertropical Matrices</span></a> - Interactive matrix examples</p></li>
+<li><p><a class="reference internal" href="api/index.html"><span class="doc">API Reference</span></a> - Browse the complete API reference</p></li>
+</ul>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<p><strong>ImportError: No module named ‘supertropical’</strong></p>
+<p>Make sure the package is installed:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>supertropical
+</pre></div>
+</div>
+<p>If not found, install it with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">supertropicalpy</span></code>.</p>
+<p><strong>NumPy version conflict</strong></p>
+<p>If you encounter NumPy compatibility issues:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>numpy&gt;<span class="o">=</span><span class="m">1</span>.20.0
+</pre></div>
+</div>
+<p><strong>Permission denied during installation</strong></p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">--user</span></code> flag:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>supertropicalpy
+</pre></div>
+</div>
+</section>
+<section id="support">
+<h2>Support<a class="headerlink" href="#support" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>GitHub Issues</strong>: <a class="reference external" href="https://github.com/KlinikAA/supertropicalpy/issues">https://github.com/KlinikAA/supertropicalpy/issues</a></p></li>
+<li><p><strong>Documentation</strong>: <a class="reference external" href="https://klinikaa.github.io/supertropicalpy/">https://klinikaa.github.io/supertropicalpy/</a></p></li>
+<li><p><strong>PyPI Package</strong>: <a class="reference external" href="https://pypi.org/project/supertropicalpy/">https://pypi.org/project/supertropicalpy/</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "KlinikAA/supertropicalpy",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="SupertropicalPy Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="theory.html" class="btn btn-neutral float-right" title="What is Supertropical Algebra?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Supertropical Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

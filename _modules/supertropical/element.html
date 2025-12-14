@@ -1,0 +1,340 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>supertropical.element &mdash; SupertropicalPy 0.1.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=ea06c36c" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=92734c54"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+      <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            SupertropicalPy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory.html">What is Supertropical Algebra?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interactive Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/01_supertropical_elements.html">1. Supertropical Algebra: Elements &amp; Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/02_ghost_surpasses.html">2. Ghost Surpasses Relation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/03_matrices.html">3. Supertropical Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/04_linear_systems.html">4. Linear Systems over Supertropical Algebra</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">SupertropicalPy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">supertropical.element</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for supertropical.element</h1><div class="highlight"><pre>
+<span></span><span class="c1"># src/supertropical/element.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">functools</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="c1"># Use @functools.total_ordering to automatically generate</span>
+<span class="c1"># comparison methods (&gt;=, &gt;, &lt;=) </span>
+<span class="c1"># from just __eq__ and __lt__. [31, 32]</span>
+<div class="viewcode-block" id="SupertropicalElement">
+<a class="viewcode-back" href="../../api/index.html#supertropical.SupertropicalElement">[docs]</a>
+<span class="nd">@functools</span><span class="o">.</span><span class="n">total_ordering</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SupertropicalElement</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a single element in supertropical algebra,</span>
+<span class="sd">    which can be either tangible or ghost.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="SupertropicalElement.__init__">
+<a class="viewcode-back" href="../../api/index.html#supertropical.SupertropicalElement.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">is_ghost</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the element.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            value (float): The numerical value of the element (e.g., 5.0).</span>
+<span class="sd">            is_ghost (bool): True if this element is a ghost (e.g., 5.0ν).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Using -math.inf as the representation for the zero element $-\infty$</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Value must be an int or float.&quot;</span><span class="p">)</span>
+            
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_ghost</span> <span class="o">=</span> <span class="n">is_ghost</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_coerce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Converts int, float, or other elements for operations.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">SupertropicalElement</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">other</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+            <span class="c1"># Standard numbers are treated as tangible elements</span>
+            <span class="k">return</span> <span class="n">SupertropicalElement</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">NotImplemented</span>
+
+    <span class="c1"># --- Arithmetic Methods  ---</span>
+
+<div class="viewcode-block" id="SupertropicalElement.__add__">
+<a class="viewcode-back" href="../../api/index.html#supertropical.SupertropicalElement.__add__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Performs supertropical addition (oplus, $\oplus$).</span>
+
+<span class="sd">        Rules:</span>
+<span class="sd">        1. a + b = max(a, b)</span>
+<span class="sd">        2. a + a = aν (becomes ghost)</span>
+<span class="sd">        3. a + aν = aν</span>
+<span class="sd">        4. aν + aν = aν</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">other</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_coerce</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">other</span> <span class="ow">is</span> <span class="bp">NotImplemented</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">NotImplemented</span>
+
+        <span class="c1"># Rules 3 &amp; 4: If one or both are ghost</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_ghost</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">is_ghost</span><span class="p">:</span>
+            <span class="c1"># a + bν -&gt; max(a, b)ν (if a!= b)</span>
+            <span class="c1"># aν + bν -&gt; max(a, b)ν</span>
+            <span class="c1"># a + aν -&gt; aν</span>
+            <span class="n">new_val</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">SupertropicalElement</span><span class="p">(</span><span class="n">new_val</span><span class="p">,</span> <span class="n">is_ghost</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># Rules 1 &amp; 2: Both are tangible</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+            <span class="c1"># Rule 2: a + a = aν </span>
+            <span class="k">return</span> <span class="n">SupertropicalElement</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">is_ghost</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Rule 1: a + b = max(a, b)</span>
+            <span class="k">return</span> <span class="n">SupertropicalElement</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span><span class="p">))</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="c1"># Ensures &#39;5 + element&#39; works [34]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__add__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SupertropicalElement.__mul__">
+<a class="viewcode-back" href="../../api/index.html#supertropical.SupertropicalElement.__mul__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Performs supertropical multiplication (odot, $\odot$).</span>
+
+<span class="sd">        Rules:</span>
+<span class="sd">        1. a * b = a + b (classical addition)</span>
+<span class="sd">        2. a * bν = (a + b)ν</span>
+<span class="sd">        3. aν * bν = (a + b)ν</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">other</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_coerce</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">other</span> <span class="ow">is</span> <span class="bp">NotImplemented</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">NotImplemented</span>
+
+        <span class="c1"># Rules 1, 2, 3: Classical addition on values</span>
+        <span class="n">new_val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span>
+        
+        <span class="c1"># The result is ghost if either operand is ghost</span>
+        <span class="n">new_is_ghost</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_ghost</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">is_ghost</span>
+        
+        <span class="k">return</span> <span class="n">SupertropicalElement</span><span class="p">(</span><span class="n">new_val</span><span class="p">,</span> <span class="n">new_is_ghost</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="c1"># Ensures &#39;5 * element&#39; works [35]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__mul__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__pow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exponent</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Performs exponentiation (power) of element.</span>
+<span class="sd">        </span>
+<span class="sd">        For element a and integer k:</span>
+<span class="sd">        - If k &gt; 0: a^k = k * a (classical multiplication)</span>
+<span class="sd">        - If k = 0: a^0 = 0 (multiplicative identity)</span>
+<span class="sd">        - If k &lt; 0: a^k = k * a (negative multiplication, e.g., 8^-2 = -16)</span>
+<span class="sd">        </span>
+<span class="sd">        In max-plus algebra, negative exponents work as repeated subtraction:</span>
+<span class="sd">        a^(-k) = -k * a</span>
+<span class="sd">        </span>
+<span class="sd">        If a is ghost, result is also ghost.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            exponent (int): The power to raise the element to (can be negative)</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            SupertropicalElement: The result of a^exponent</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">exponent</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Exponent must be an integer&quot;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">exponent</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># a^0 = 0 (multiplicative identity in supertropical)</span>
+            <span class="k">return</span> <span class="n">SupertropicalElement</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">is_ghost</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        
+        <span class="c1"># a^k = k * a (works for both positive and negative k)</span>
+        <span class="n">new_val</span> <span class="o">=</span> <span class="n">exponent</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">return</span> <span class="n">SupertropicalElement</span><span class="p">(</span><span class="n">new_val</span><span class="p">,</span> <span class="n">is_ghost</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">is_ghost</span><span class="p">)</span>
+
+    <span class="c1"># --- Representation &amp; Comparison Methods [36, 37] ---</span>
+    
+<div class="viewcode-block" id="SupertropicalElement.__repr__">
+<a class="viewcode-back" href="../../api/index.html#supertropical.SupertropicalElement.__repr__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Formal representation for debugging.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;SupertropicalElement(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">, is_ghost=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">is_ghost</span><span class="si">}</span><span class="s2">)&quot;</span></div>
+
+
+<div class="viewcode-block" id="SupertropicalElement.__str__">
+<a class="viewcode-back" href="../../api/index.html#supertropical.SupertropicalElement.__str__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Readable string representation.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">inf</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;-inf&quot;</span>
+        <span class="n">suffix</span> <span class="o">=</span> <span class="s2">&quot;ν&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_ghost</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="si">}{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span></div>
+
+
+<div class="viewcode-block" id="SupertropicalElement.__eq__">
+<a class="viewcode-back" href="../../api/index.html#supertropical.SupertropicalElement.__eq__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Equality check: a == b.&quot;&quot;&quot;</span>
+        <span class="n">other</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_coerce</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">other</span> <span class="ow">is</span> <span class="bp">NotImplemented</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_ghost</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">is_ghost</span></div>
+
+
+<div class="viewcode-block" id="SupertropicalElement.__lt__">
+<a class="viewcode-back" href="../../api/index.html#supertropical.SupertropicalElement.__lt__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Less than check: a &lt; b.&quot;&quot;&quot;</span>
+        <span class="n">other</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_coerce</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">other</span> <span class="ow">is</span> <span class="bp">NotImplemented</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">NotImplemented</span>
+        
+        <span class="c1"># Primary comparison is by value</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">&lt;</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">&gt;</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+            
+        <span class="c1"># If values are equal, tangible (False) &lt; ghost (True)</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_ghost</span> <span class="ow">and</span> <span class="n">other</span><span class="o">.</span><span class="n">is_ghost</span></div>
+
+
+    <span class="c1"># --- Property Methods ---</span>
+    
+<div class="viewcode-block" id="SupertropicalElement.is_tangible">
+<a class="viewcode-back" href="../../api/index.html#supertropical.SupertropicalElement.is_tangible">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_tangible</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns True if this element is tangible.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_ghost</span></div>
+
+    
+<div class="viewcode-block" id="SupertropicalElement.ghost_surpasses">
+<a class="viewcode-back" href="../../api/index.html#supertropical.SupertropicalElement.ghost_surpasses">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ghost_surpasses</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Ghost surpasses relation (⊨).</span>
+<span class="sd">        </span>
+<span class="sd">        Definition: x ⊨ y if x = y ⊕ z for some z ∈ G_0 (ghost element).</span>
+<span class="sd">        </span>
+<span class="sd">        In practice: x ⊨ y when x and y have the same value and x is ghost.</span>
+<span class="sd">        This means x &quot;ghost surpasses&quot; y.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            other: Another SupertropicalElement</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if self ghost-surpasses other</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">other</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_coerce</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">other</span> <span class="ow">is</span> <span class="bp">NotImplemented</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        
+        <span class="c1"># x ⊨ y if x has same value as y and x is ghost</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_ghost</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Supertropical Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

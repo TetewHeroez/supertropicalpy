@@ -1,0 +1,468 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What is Supertropical Algebra? &mdash; SupertropicalPy 0.1.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=ea06c36c" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=92734c54"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+      <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1. Supertropical Algebra: Elements &amp; Operations" href="examples/01_supertropical_elements.html" />
+    <link rel="prev" title="Getting Started" href="getting_started.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            SupertropicalPy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">What is Supertropical Algebra?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#supertropical-algebra">1. Supertropical Algebra</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#extended-semiring-tropical">1.1 Extended Semiring Tropical</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#definition-1-1-extended-semiring-tropical">Definition 1.1 (Extended Semiring Tropical)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#definition-1-2-extended-semiring-tropical-order">Definition 1.2 (Extended Semiring Tropical Order)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#axiom-1-1-extended-semiring-tropical-operations">Axiom 1.1 (Extended Semiring Tropical Operations)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ghost-surpasses-relation">2. Ghost Surpasses Relation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#definition">2.1 Definition</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#definition-2-1-ghost-surpasses-relation">Definition 2.1 (Ghost Surpasses Relation)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#supertropical-matrices">3. Supertropical Matrices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#matrix-operations">3.1 Matrix Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-matrix-operations">3.2 Advanced Matrix Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#permanent-supertropical-determinant">3.3 Permanent (Supertropical Determinant)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adjoint-matrix-and-pseudo-inverse">3.4 Adjoint Matrix and Pseudo-Inverse</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#linear-systems-over-supertropical-algebra">4. Linear Systems over Supertropical Algebra</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#homogeneous-and-non-homogeneous-systems">4.1 Homogeneous and Non-Homogeneous Systems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solution-analysis">4.2 Solution Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cramer-s-rule">4.3 Cramer’s Rule</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#implementation-notes">Implementation Notes</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interactive Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples/01_supertropical_elements.html">1. Supertropical Algebra: Elements &amp; Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/02_ghost_surpasses.html">2. Ghost Surpasses Relation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/03_matrices.html">3. Supertropical Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/04_linear_systems.html">4. Linear Systems over Supertropical Algebra</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SupertropicalPy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">What is Supertropical Algebra?</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/theory.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="what-is-supertropical-algebra">
+<h1>What is Supertropical Algebra?<a class="headerlink" href="#what-is-supertropical-algebra" title="Link to this heading"></a></h1>
+<p>Supertropical algebra is an algebraic structure that extends tropical algebra
+by introducing <strong>ghost elements</strong>. It provides a framework for solving
+optimization problems and has applications in algebraic geometry, phylogenetics,
+and computer science.
+This page provides comprehensive mathematical background on supertropical algebra, based on the extended semiring tropical framework.</p>
+<section id="supertropical-algebra">
+<h2>1. Supertropical Algebra<a class="headerlink" href="#supertropical-algebra" title="Link to this heading"></a></h2>
+<section id="extended-semiring-tropical">
+<h3>1.1 Extended Semiring Tropical<a class="headerlink" href="#extended-semiring-tropical" title="Link to this heading"></a></h3>
+<p>As discussed in max-plus algebra, the tropical algebra structure lacks an inverse element for the addition operation Γèò. This limitation is specifically addressed by introducing the <strong>extended semiring tropical</strong> structure, allowing us to solve systems of linear equations.</p>
+<section id="definition-1-1-extended-semiring-tropical">
+<h4>Definition 1.1 (Extended Semiring Tropical)<a class="headerlink" href="#definition-1-1-extended-semiring-tropical" title="Link to this heading"></a></h4>
+<p>An <strong>extended semiring tropical</strong> is defined as <span class="math notranslate nohighlight">\((T, \oplus, \otimes)\)</span> where <span class="math notranslate nohighlight">\(T = \mathbb{R} \cup \{-\infty\} \cup \mathbb{R}^\nu\)</span>, where <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> is the set of all real numbers and <span class="math notranslate nohighlight">\(\mathbb{R}^\nu = \{a^\nu \mid a \in \mathbb{R}\}\)</span>.</p>
+<ul class="simple">
+<li><p>The <strong>neutral element</strong> for <span class="math notranslate nohighlight">\(T\)</span> is <span class="math notranslate nohighlight">\(\varepsilon \stackrel{\text{def}}{=} -\infty\)</span></p></li>
+<li><p>The <strong>unit element</strong> is <span class="math notranslate nohighlight">\(e \stackrel{\text{def}}{=} 0\)</span></p></li>
+</ul>
+<p>The set <span class="math notranslate nohighlight">\(\mathbb{R}_{-\infty} = \mathbb{R} \cup \{-\infty\}\)</span> represents the <strong>ideal</strong> of <span class="math notranslate nohighlight">\(T\)</span>, called the <strong>ideal ghost</strong>.</p>
+<p>Meanwhile, a function <span class="math notranslate nohighlight">\(v : T \to \mathbb{R}_{-\infty}\)</span> defined by <span class="math notranslate nohighlight">\(v(x) \stackrel{\text{def}}{=} x, \forall x \in \mathbb{R}_{-\infty}\)</span> represents <strong>tangible identity</strong>, and <span class="math notranslate nohighlight">\(v(a) = a^\nu, \forall a \in \mathbb{R}\)</span> where element <span class="math notranslate nohighlight">\(a^\nu\)</span> is called the <strong>element ghost</strong> or <strong>ghost</strong> of <span class="math notranslate nohighlight">\(a\)</span>. The function <span class="math notranslate nohighlight">\(v\)</span> is called the <strong>ghost mapping</strong>.</p>
+</section>
+<section id="definition-1-2-extended-semiring-tropical-order">
+<h4>Definition 1.2 (Extended Semiring Tropical Order)<a class="headerlink" href="#definition-1-2-extended-semiring-tropical-order" title="Link to this heading"></a></h4>
+<p>Given an <strong>extended semiring tropical</strong> <span class="math notranslate nohighlight">\(T\)</span>, a <strong>partial order</strong> relation <span class="math notranslate nohighlight">\(\prec\)</span> is defined on <span class="math notranslate nohighlight">\(T\)</span> as follows:</p>
+<p>For any <span class="math notranslate nohighlight">\(a, b \in \mathbb{R}\)</span>, <span class="math notranslate nohighlight">\(a^\nu, b^\nu \in \mathbb{R}^\nu\)</span> and <span class="math notranslate nohighlight">\(x \in T\)</span>:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(-\infty \prec x, \forall x \in T \setminus \{-\infty\}\)</span></p></li>
+<li><p>For any real numbers <span class="math notranslate nohighlight">\(a \prec b\)</span>, then <span class="math notranslate nohighlight">\(a \prec a^\nu, a \prec b^\nu, a^\nu \prec b\)</span>, and <span class="math notranslate nohighlight">\(a^\nu \prec b^\nu\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a \prec a^\nu\)</span> for any <span class="math notranslate nohighlight">\(a \in \mathbb{R}\)</span></p></li>
+</ol>
+</section>
+<section id="axiom-1-1-extended-semiring-tropical-operations">
+<h4>Axiom 1.1 (Extended Semiring Tropical Operations)<a class="headerlink" href="#axiom-1-1-extended-semiring-tropical-operations" title="Link to this heading"></a></h4>
+<p>Given an extended semiring tropical <span class="math notranslate nohighlight">\(T\)</span>, the operations <span class="math notranslate nohighlight">\(\oplus\)</span> (max) and <span class="math notranslate nohighlight">\(\otimes\)</span> (addition) on <span class="math notranslate nohighlight">\(T\)</span> satisfy the following axioms.</p>
+<p>For any <span class="math notranslate nohighlight">\(a, b \in \mathbb{R}\)</span>, <span class="math notranslate nohighlight">\(a^\nu, b^\nu \in \mathbb{R}^\nu\)</span> and <span class="math notranslate nohighlight">\(x, y \in T\)</span>:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(-\infty \oplus x = x \oplus -\infty = x, \forall x \in T\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x \oplus y = \max_{\prec} \{x, y\}\)</span> provided <span class="math notranslate nohighlight">\(x \neq y\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a \oplus a = a^\nu \oplus a^\nu = a \oplus a^\nu = a^\nu \oplus a = a^\nu\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(-\infty \otimes x = x \otimes -\infty = -\infty\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a \otimes b = a + b\)</span> (classical addition)</p></li>
+<li><p><span class="math notranslate nohighlight">\(a^\nu \otimes b = a \otimes b^\nu = a^\nu \otimes b^\nu = (a + b)^\nu\)</span></p></li>
+</ol>
+<p><strong>Example 1.1</strong>: Operations in extended semiring tropical <span class="math notranslate nohighlight">\(T\)</span>:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(-\infty \oplus 4 = 4 \oplus -\infty = 4\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(-2 \oplus 7 = \max_{\prec} \{-2, 7\} = 7\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(8 \oplus 8 = 8^\nu \oplus 8^\nu = 8 \oplus 8^\nu = 8^\nu \oplus 8 = 8^\nu\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(-\infty \otimes 3 = 3 \otimes -\infty = -\infty\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(6 \otimes 9 = 6 + 9 = 15\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(7^\nu \otimes 8 = 7 \otimes 8^\nu = 7^\nu \otimes 8^\nu = (7 + 8)^\nu = 15^\nu\)</span></p></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="ghost-surpasses-relation">
+<h2>2. Ghost Surpasses Relation<a class="headerlink" href="#ghost-surpasses-relation" title="Link to this heading"></a></h2>
+<section id="definition">
+<h3>2.1 Definition<a class="headerlink" href="#definition" title="Link to this heading"></a></h3>
+<p>In supertropical semiring <span class="math notranslate nohighlight">\(R\)</span>, for any <span class="math notranslate nohighlight">\(a \in R\)</span>, then <span class="math notranslate nohighlight">\(a \oplus a = -\infty\)</span> only holds when <span class="math notranslate nohighlight">\(a = -\infty\)</span>. However, for any <span class="math notranslate nohighlight">\(a \in T\)</span> then <span class="math notranslate nohighlight">\(a \oplus a = a^\nu\)</span> and for any <span class="math notranslate nohighlight">\(x \in G\)</span> then <span class="math notranslate nohighlight">\(x \oplus x = x\)</span>. Therefore, a <strong>ghost surpasses</strong> relation in <span class="math notranslate nohighlight">\(R\)</span> will be introduced as follows.</p>
+<section id="definition-2-1-ghost-surpasses-relation">
+<h4>Definition 2.1 (Ghost Surpasses Relation)<a class="headerlink" href="#definition-2-1-ghost-surpasses-relation" title="Link to this heading"></a></h4>
+<p>Given a supertropical semiring <span class="math notranslate nohighlight">\(R\)</span>, a relation <span class="math notranslate nohighlight">\(\vDash\)</span> is called a <strong>ghost surpasses</strong> relation in <span class="math notranslate nohighlight">\(R\)</span> defined as:</p>
+<div class="math notranslate nohighlight">
+\[x \vDash y \quad \text{if} \quad x = y \oplus z \quad \text{for some} \quad z \in \mathcal{G}_0\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{G}_0\)</span> is the set of ghost elements.</p>
+<p><strong>Example 2.1</strong>: Ghost surpasses relation in supertropical semiring <span class="math notranslate nohighlight">\(R\)</span>:</p>
+<ol class="arabic simple">
+<li><p>For <span class="math notranslate nohighlight">\(9, 10^\nu \in R\)</span>, we have <span class="math notranslate nohighlight">\(10^\nu \vDash 9\)</span> because <span class="math notranslate nohighlight">\(10^\nu = 9 \oplus 10^\nu\)</span>. Here, <span class="math notranslate nohighlight">\(z = 10^\nu\)</span> is a value in <span class="math notranslate nohighlight">\(\mathcal{G}_0\)</span> satisfying <span class="math notranslate nohighlight">\(10^\nu = 9 \oplus 10^\nu\)</span>.</p></li>
+<li><p>For <span class="math notranslate nohighlight">\(-5 \in R\)</span>, we have <span class="math notranslate nohighlight">\(-5 \vDash -5\)</span> because <span class="math notranslate nohighlight">\(-5 = -5 \oplus \varepsilon\)</span>. Here, <span class="math notranslate nohighlight">\(z = \varepsilon \in \mathcal{G}_0\)</span> with <span class="math notranslate nohighlight">\(z \neq \varepsilon\)</span> satisfying <span class="math notranslate nohighlight">\(-5 = -5 \oplus z\)</span> is <span class="math notranslate nohighlight">\(z \prec -5\)</span>. For example, <span class="math notranslate nohighlight">\(z = -6^\nu\)</span> and <span class="math notranslate nohighlight">\(z = -7.5^\nu\)</span>. Notice that there are many values of <span class="math notranslate nohighlight">\(z \in \mathcal{G}_0\)</span> satisfying <span class="math notranslate nohighlight">\(-5 = -5 \oplus z\)</span> other than <span class="math notranslate nohighlight">\(z \prec -5\)</span>.</p></li>
+<li><p>Meanwhile, for <span class="math notranslate nohighlight">\(7, 6 \in R\)</span>, we have <span class="math notranslate nohighlight">\(7 \nvDash 6\)</span> because the value of <span class="math notranslate nohighlight">\(z\)</span> satisfying <span class="math notranslate nohighlight">\(7 = 6 \oplus z\)</span> is only <span class="math notranslate nohighlight">\(z = 7 \notin \mathcal{G}_0\)</span>.</p></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="supertropical-matrices">
+<h2>3. Supertropical Matrices<a class="headerlink" href="#supertropical-matrices" title="Link to this heading"></a></h2>
+<section id="matrix-operations">
+<h3>3.1 Matrix Operations<a class="headerlink" href="#matrix-operations" title="Link to this heading"></a></h3>
+<p>The set of all <span class="math notranslate nohighlight">\(m \times n\)</span> matrices over supertropical semiring is denoted as <span class="math notranslate nohighlight">\(M_{m \times n}(R)\)</span>, where matrix elements are members of <span class="math notranslate nohighlight">\(R\)</span>. When the dimension of a matrix is square, denoted as <span class="math notranslate nohighlight">\(M_n(R)\)</span>, the binary operations ⊕ and ⊗ in <span class="math notranslate nohighlight">\(R\)</span> can be extended to matrix operations in <span class="math notranslate nohighlight">\(M_n(R)\)</span>. Furthermore, the ghost surpasses relation in <span class="math notranslate nohighlight">\(R\)</span> can also be extended to matrices in <span class="math notranslate nohighlight">\(M_n(R)\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(A \vDash B\)</span> then <span class="math notranslate nohighlight">\(a_{i,j} \vDash b_{i,j}\)</span> for any <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> in <span class="math notranslate nohighlight">\(\underline{n}\)</span>.</p>
+<p><strong>Matrix Addition</strong></p>
+<p>For matrices <span class="math notranslate nohighlight">\(A, B \in M_{m \times n}(R)\)</span>, the addition <span class="math notranslate nohighlight">\(A \oplus B\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[[A \oplus B]_{i,j} = a_{i,j} \oplus b_{i,j}\]</div>
+<p>for <span class="math notranslate nohighlight">\(i \in \underline{m}\)</span> and <span class="math notranslate nohighlight">\(j \in \underline{n}\)</span>.</p>
+<p><strong>Example 3.1</strong>: Given matrices</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 3 \end{pmatrix}, \quad B = \begin{pmatrix} 5 &amp; 4^\nu \\ 2 &amp; 1 \end{pmatrix}\end{split}\]</div>
+<p>Then:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A \oplus B = \begin{pmatrix} 2 \oplus 5 &amp; 1 \oplus 4^\nu \\ 1 \oplus 2 &amp; 3 \oplus 1 \end{pmatrix} = \begin{pmatrix} 5 &amp; 4^\nu \\ 2 &amp; 3 \end{pmatrix}\end{split}\]</div>
+<p><strong>Matrix Multiplication</strong></p>
+<p>For matrix <span class="math notranslate nohighlight">\(A \in M_{m \times p}(R)\)</span> and <span class="math notranslate nohighlight">\(B \in M_{p \times n}(R)\)</span>, the multiplication <span class="math notranslate nohighlight">\(A \otimes B\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[[A \otimes B]_{i,j} = \bigoplus_{k=1}^{p} a_{i,k} \otimes b_{k,j}\]</div>
+<p>for <span class="math notranslate nohighlight">\(i \in \underline{m}\)</span> and <span class="math notranslate nohighlight">\(j \in \underline{n}\)</span>.</p>
+<p><strong>Example 3.2</strong>: Using the same matrices <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> from Example 3.1:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A \otimes B = \begin{pmatrix}
+(2 \otimes 5) \oplus (1 \otimes 2) &amp; (2 \otimes 4^\nu) \oplus (1 \otimes 1) \\
+(1 \otimes 5) \oplus (3 \otimes 2) &amp; (1 \otimes 4^\nu) \oplus (3 \otimes 1)
+\end{pmatrix}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}= \begin{pmatrix}
+7 \oplus 3 &amp; 6^\nu \oplus 2 \\
+6 \oplus 5 &amp; 5^\nu \oplus 4
+\end{pmatrix} = \begin{pmatrix}
+7 &amp; 6^\nu \\
+6 &amp; 5^\nu
+\end{pmatrix}\end{split}\]</div>
+</section>
+<section id="advanced-matrix-operations">
+<h3>3.2 Advanced Matrix Operations<a class="headerlink" href="#advanced-matrix-operations" title="Link to this heading"></a></h3>
+<p><strong>Matrix Transpose</strong></p>
+<p>For any matrix <span class="math notranslate nohighlight">\(A \in M_{m \times n}(R)\)</span>, its transpose <span class="math notranslate nohighlight">\(A^T \in M_{n \times m}(R)\)</span> is defined by:</p>
+<div class="math notranslate nohighlight">
+\[[A^T]_{i,j} = a_{j,i}\]</div>
+<p>where <span class="math notranslate nohighlight">\(i \in \underline{n}\)</span> and <span class="math notranslate nohighlight">\(j \in \underline{m}\)</span>.</p>
+<p><strong>Example 3.3</strong>: For the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \begin{pmatrix} 2 &amp; 1 &amp; 5^\nu \\ 3 &amp; 4 &amp; 1 \end{pmatrix}\end{split}\]</div>
+<p>The transpose is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A^T = \begin{pmatrix} 2 &amp; 3 \\ 1 &amp; 4 \\ 5^\nu &amp; 1 \end{pmatrix}\end{split}\]</div>
+<p><strong>Matrix Power</strong></p>
+<p>For any square matrix <span class="math notranslate nohighlight">\(A \in M_n(R)\)</span> and positive integer <span class="math notranslate nohighlight">\(k\)</span>, the power <span class="math notranslate nohighlight">\(A^k\)</span> is defined recursively:</p>
+<div class="math notranslate nohighlight">
+\[A^1 = A, \quad A^k = A^{k-1} \otimes A\]</div>
+<p><strong>Example 3.4</strong>: For the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \begin{pmatrix} 1 &amp; 2 \\ 0 &amp; 1 \end{pmatrix}\end{split}\]</div>
+<p>We can compute:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A^2 = A \otimes A = \begin{pmatrix}
+(1 \otimes 1) \oplus (2 \otimes 0) &amp; (1 \otimes 2) \oplus (2 \otimes 1) \\
+(0 \otimes 1) \oplus (1 \otimes 0) &amp; (0 \otimes 2) \oplus (1 \otimes 1)
+\end{pmatrix}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}= \begin{pmatrix}
+1 \oplus (-\infty) &amp; 3 \oplus 3 \\
+(-\infty) \oplus (-\infty) &amp; (-\infty) \oplus 1
+\end{pmatrix} = \begin{pmatrix}
+1 &amp; 3 \\
+-\infty &amp; 1
+\end{pmatrix}\end{split}\]</div>
+<p><strong>Identity Matrix</strong></p>
+<p>The identity matrix <span class="math notranslate nohighlight">\(I_n \in M_n(R)\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}[I_n]_{i,j} = \begin{cases}
+0 &amp; \text{if } i = j \\
+-\infty &amp; \text{if } i \neq j
+\end{cases}\end{split}\]</div>
+<p>It satisfies <span class="math notranslate nohighlight">\(A \otimes I_n = I_n \otimes A = A\)</span> for any <span class="math notranslate nohighlight">\(A \in M_n(R)\)</span>.</p>
+</section>
+<section id="permanent-supertropical-determinant">
+<h3>3.3 Permanent (Supertropical Determinant)<a class="headerlink" href="#permanent-supertropical-determinant" title="Link to this heading"></a></h3>
+<p>The <strong>permanent</strong> of a square matrix <span class="math notranslate nohighlight">\(A \in M_n(R)\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\text{per}(A) = \bigoplus_{\sigma \in S_n} \bigotimes_{i=1}^{n} a_{i,\sigma(i)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(S_n\)</span> is the set of all permutations of <span class="math notranslate nohighlight">\(\{1, 2, \ldots, n\}\)</span>.</p>
+<p><strong>Example 3.5</strong>: For a <span class="math notranslate nohighlight">\(2 \times 2\)</span> matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \begin{pmatrix} 3 &amp; 1 \\ 2 &amp; 4 \end{pmatrix}\end{split}\]</div>
+<p>The permanent is:</p>
+<div class="math notranslate nohighlight">
+\[\text{per}(A) = (3 \otimes 4) \oplus (1 \otimes 2) = 7 \oplus 3 = 7\]</div>
+<p>For a <span class="math notranslate nohighlight">\(3 \times 3\)</span> matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}B = \begin{pmatrix} 1 &amp; 2 &amp; 0 \\ 2 &amp; 1 &amp; 3 \\ 1 &amp; 0 &amp; 2 \end{pmatrix}\end{split}\]</div>
+<p>We compute over all 6 permutations:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\((1,2,3) \to 1 \otimes 1 \otimes 2 = 4\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((1,3,2) \to 1 \otimes 3 \otimes 0 = 4\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((2,1,3) \to 2 \otimes 2 \otimes 2 = 6\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((2,3,1) \to 2 \otimes 3 \otimes 1 = 6\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((3,1,2) \to 0 \otimes 2 \otimes 0 = 2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((3,2,1) \to 0 \otimes 1 \otimes 1 = 2\)</span></p></li>
+</ol>
+<p>Therefore <span class="math notranslate nohighlight">\(\text{per}(B) = 4 \oplus 4 \oplus 6 \oplus 6 \oplus 2 \oplus 2 = 6\)</span>.</p>
+</section>
+<section id="adjoint-matrix-and-pseudo-inverse">
+<h3>3.4 Adjoint Matrix and Pseudo-Inverse<a class="headerlink" href="#adjoint-matrix-and-pseudo-inverse" title="Link to this heading"></a></h3>
+<p>The <strong>adjoint matrix</strong> <span class="math notranslate nohighlight">\(\text{adj}(A)\)</span> of a matrix <span class="math notranslate nohighlight">\(A \in M_n(R)\)</span> is defined by:</p>
+<div class="math notranslate nohighlight">
+\[[\text{adj}(A)]_{i,j} = \text{per}(M_{j,i})\]</div>
+<p>where <span class="math notranslate nohighlight">\(M_{j,i}\)</span> is the <span class="math notranslate nohighlight">\((n-1) \times (n-1)\)</span> minor obtained by deleting row <span class="math notranslate nohighlight">\(j\)</span> and column <span class="math notranslate nohighlight">\(i\)</span> from <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>The <strong>pseudo-inverse</strong> or <strong>weak inverse</strong> <span class="math notranslate nohighlight">\(A^\nabla\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[A^\nabla = \text{adj}(A) \otimes (\text{per}(A))^{-1}\]</div>
+<p>where <span class="math notranslate nohighlight">\((\text{per}(A))^{-1} = -\text{per}(A)\)</span> in supertropical algebra.</p>
+<p><strong>Example 3.6</strong>: For the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \begin{pmatrix} 3 &amp; 1 \\ 2 &amp; 4 \end{pmatrix}\end{split}\]</div>
+<p>We have <span class="math notranslate nohighlight">\(\text{per}(A) = 7\)</span> (from Example 3.5).</p>
+<p>The minors are:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(M_{1,1} = (4)\)</span>, so <span class="math notranslate nohighlight">\(\text{per}(M_{1,1}) = 4\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(M_{1,2} = (2)\)</span>, so <span class="math notranslate nohighlight">\(\text{per}(M_{1,2}) = 2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(M_{2,1} = (1)\)</span>, so <span class="math notranslate nohighlight">\(\text{per}(M_{2,1}) = 1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(M_{2,2} = (3)\)</span>, so <span class="math notranslate nohighlight">\(\text{per}(M_{2,2}) = 3\)</span></p></li>
+</ul>
+<p>Therefore:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{adj}(A) = \begin{pmatrix} 4 &amp; 2 \\ 1 &amp; 3 \end{pmatrix}\end{split}\]</div>
+<p>The pseudo-inverse is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A^\nabla = \text{adj}(A) \otimes (-7) = \begin{pmatrix} 4 + (-7) &amp; 2 + (-7) \\ 1 + (-7) &amp; 3 + (-7) \end{pmatrix} = \begin{pmatrix} -3 &amp; -5 \\ -6 &amp; -4 \end{pmatrix}\end{split}\]</div>
+</section>
+</section>
+<section id="linear-systems-over-supertropical-algebra">
+<h2>4. Linear Systems over Supertropical Algebra<a class="headerlink" href="#linear-systems-over-supertropical-algebra" title="Link to this heading"></a></h2>
+<section id="homogeneous-and-non-homogeneous-systems">
+<h3>4.1 Homogeneous and Non-Homogeneous Systems<a class="headerlink" href="#homogeneous-and-non-homogeneous-systems" title="Link to this heading"></a></h3>
+<p>As in ordinary linear algebra, linear systems over supertropical algebra can be classified into <strong>homogeneous systems</strong> and <strong>non-homogeneous systems</strong>. In supertropical algebra, the <strong>ghost surpasses relation</strong> will be used instead of the equality relation <span class="math notranslate nohighlight">\(=\)</span>.</p>
+<p>A homogeneous linear system over supertropical algebra is stated as <span class="math notranslate nohighlight">\(A \otimes x \vDash b\)</span>. Meanwhile, if <span class="math notranslate nohighlight">\(b = \mathcal{E}\)</span> where <span class="math notranslate nohighlight">\(\mathcal{E}\)</span> is a vector whose elements are all <span class="math notranslate nohighlight">\(\varepsilon\)</span>, then the system <span class="math notranslate nohighlight">\(A \otimes x \vDash \mathcal{E}\)</span> is called a <strong>homogeneous system</strong> over supertropical algebra.</p>
+</section>
+<section id="solution-analysis">
+<h3>4.2 Solution Analysis<a class="headerlink" href="#solution-analysis" title="Link to this heading"></a></h3>
+<p>As has been explained in max-plus algebra theory, the max-plus algebra structure <span class="math notranslate nohighlight">\(\mathbb{R}_{\max} = (\mathbb{R}_{\varepsilon}, \oplus, \otimes)\)</span> lacks inverse elements for the <span class="math notranslate nohighlight">\(\oplus\)</span> operation. In other words, if <span class="math notranslate nohighlight">\(a \in \mathbb{R}_{\varepsilon}\)</span>, there does not exist <span class="math notranslate nohighlight">\(x \in \mathbb{R}_{\varepsilon}\)</span> satisfying <span class="math notranslate nohighlight">\(a \oplus x = \varepsilon\)</span> if and only if <span class="math notranslate nohighlight">\(a = \varepsilon\)</span>. This limitation makes it difficult to directly solve homogeneous linear systems <span class="math notranslate nohighlight">\(A \otimes x = b\)</span> in <span class="math notranslate nohighlight">\(\mathbb{R}_{\max}\)</span>.</p>
+<p>As a motivation from the discussion of homogeneous systems in <span class="math notranslate nohighlight">\(\mathbb{R}_{\max}\)</span>, the solution for non-homogeneous linear systems <span class="math notranslate nohighlight">\(A \otimes x \vDash b\)</span> will be provided.</p>
+</section>
+<section id="cramer-s-rule">
+<h3>4.3 Cramer’s Rule<a class="headerlink" href="#cramer-s-rule" title="Link to this heading"></a></h3>
+<p>The solution to the system <span class="math notranslate nohighlight">\(A \otimes x \vDash b\)</span> can be found using <strong>Cramer’s rule</strong> in supertropical algebra:</p>
+<div class="math notranslate nohighlight">
+\[x = \text{adj}(A) \otimes b \otimes (\text{per}(A))^{-1}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\text{per}(A)\)</span> is the <strong>permanent</strong> (supertropical determinant)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{adj}(A)\)</span> is the <strong>adjoint matrix</strong></p></li>
+<li><p><span class="math notranslate nohighlight">\((\text{per}(A))^{-1} = -\text{per}(A)\)</span> in supertropical algebra</p></li>
+</ul>
+<p>The matrix is <strong>nonsingular</strong> (has unique solution) if <span class="math notranslate nohighlight">\(\text{per}(A)\)</span> is <strong>tangible</strong> (not ghost).</p>
+<p><strong>Implementation</strong>: The package provides the <cite>solve()</cite> method that implements this algorithm automatically.</p>
+<p><strong>Example 4.1</strong>: Solve the system <span class="math notranslate nohighlight">\(A \otimes x \vDash b\)</span> where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \begin{pmatrix} 2 &amp; 3 \\ 1 &amp; 4 \end{pmatrix}, \quad b = \begin{pmatrix} 8 \\ 7 \end{pmatrix}\end{split}\]</div>
+<p>Using the <cite>solve()</cite> method or manual computation:</p>
+<p><strong>Step 1</strong>: Compute the permanent</p>
+<div class="math notranslate nohighlight">
+\[\text{per}(A) = (2 \otimes 4) \oplus (3 \otimes 1) = 6 \oplus 4 = 6\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\text{per}(A) = 6\)</span> is tangible, the system has a unique solution.</p>
+<p><strong>Step 2</strong>: Compute the adjoint matrix</p>
+<p>The minors are:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(M_{1,1} = (4)\)</span>, so <span class="math notranslate nohighlight">\(\text{per}(M_{1,1}) = 4\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(M_{1,2} = (1)\)</span>, so <span class="math notranslate nohighlight">\(\text{per}(M_{1,2}) = 1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(M_{2,1} = (3)\)</span>, so <span class="math notranslate nohighlight">\(\text{per}(M_{2,1}) = 3\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(M_{2,2} = (2)\)</span>, so <span class="math notranslate nohighlight">\(\text{per}(M_{2,2}) = 2\)</span></p></li>
+</ul>
+<p>Therefore:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{adj}(A) = \begin{pmatrix} 4 &amp; 1 \\ 3 &amp; 2 \end{pmatrix}\end{split}\]</div>
+<p><strong>Step 3</strong>: Apply Cramer’s rule</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}x = \text{adj}(A) \otimes b \otimes (-\text{per}(A)) = \begin{pmatrix} 4 &amp; 1 \\ 3 &amp; 2 \end{pmatrix} \otimes \begin{pmatrix} 8 \\ 7 \end{pmatrix} \otimes (-6)\end{split}\]</div>
+<p>First compute <span class="math notranslate nohighlight">\(\text{adj}(A) \otimes b\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{adj}(A) \otimes b = \begin{pmatrix} (4 \otimes 8) \oplus (1 \otimes 7) \\ (3 \otimes 8) \oplus (2 \otimes 7) \end{pmatrix} = \begin{pmatrix} 12 \oplus 8 \\ 11 \oplus 9 \end{pmatrix} = \begin{pmatrix} 12 \\ 11 \end{pmatrix}\end{split}\]</div>
+<p>Then multiply by <span class="math notranslate nohighlight">\(-6\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}x = \begin{pmatrix} 12 + (-6) \\ 11 + (-6) \end{pmatrix} = \begin{pmatrix} 6 \\ 5 \end{pmatrix}\end{split}\]</div>
+<p><strong>Step 4</strong>: Verify the solution</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A \otimes x = \begin{pmatrix} 2 &amp; 3 \\ 1 &amp; 4 \end{pmatrix} \otimes \begin{pmatrix} 6 \\ 5 \end{pmatrix} = \begin{pmatrix} (2 \otimes 6) \oplus (3 \otimes 5) \\ (1 \otimes 6) \oplus (4 \otimes 5) \end{pmatrix}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}= \begin{pmatrix} 8 \oplus 8 \\ 7 \oplus 9 \end{pmatrix} = \begin{pmatrix} 8^\nu \\ 9 \end{pmatrix}\end{split}\]</div>
+<p>We check: <span class="math notranslate nohighlight">\(8^\nu \vDash 8\)</span> ✓ and <span class="math notranslate nohighlight">\(9 \vDash 7\)</span> ✓ (since <span class="math notranslate nohighlight">\(9 &gt; 7\)</span>).</p>
+<p>Therefore <span class="math notranslate nohighlight">\(x = \begin{pmatrix} 6 \\ 5 \end{pmatrix}\)</span> is indeed a solution.</p>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Izhakian, Z., &amp; Rowen, L. (2010). <em>Supertropical algebra</em>. Advances in Mathematics.</p></li>
+<li><p>Subiono (2022). <em>Aljabar Min-Max Plus dan Terapannya</em>. Departemen Matematika ITS, Surabaya, 22 February 2022.</p></li>
+</ul>
+</section>
+<section id="implementation-notes">
+<h2>Implementation Notes<a class="headerlink" href="#implementation-notes" title="Link to this heading"></a></h2>
+<p>This package implements the supertropical semiring with:</p>
+<ul class="simple">
+<li><p><strong>Tangible elements</strong>: Standard numerical values</p></li>
+<li><p><strong>Ghost elements</strong>: Values marked with the <code class="docutils literal notranslate"><span class="pre">is_ghost</span></code> flag, displayed with ╬╜</p></li>
+<li><p><strong>Zero element</strong>: Represented as <code class="docutils literal notranslate"><span class="pre">-math.inf</span></code></p></li>
+<li><p><strong>Efficient operations</strong>: Using NumPy arrays for matrix computations</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "KlinikAA/supertropicalpy",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="getting_started.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples/01_supertropical_elements.html" class="btn btn-neutral float-right" title="1. Supertropical Algebra: Elements &amp; Operations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Supertropical Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

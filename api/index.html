@@ -1,0 +1,549 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Reference &mdash; SupertropicalPy 0.1.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ea06c36c" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=92734c54"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+      <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="4. Linear Systems over Supertropical Algebra" href="../examples/04_linear_systems.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SupertropicalPy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory.html">What is Supertropical Algebra?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interactive Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/01_supertropical_elements.html">1. Supertropical Algebra: Elements &amp; Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/02_ghost_surpasses.html">2. Ghost Surpasses Relation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/03_matrices.html">3. Supertropical Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/04_linear_systems.html">4. Linear Systems over Supertropical Algebra</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#core-classes">Core Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#supertropicalelement">SupertropicalElement</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#supertropical.SupertropicalElement"><code class="docutils literal notranslate"><span class="pre">SupertropicalElement</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#supertropicalmatrix">SupertropicalMatrix</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#supertropical.SupertropicalMatrix"><code class="docutils literal notranslate"><span class="pre">SupertropicalMatrix</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#quick-reference">Quick Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#element-operations">Element Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#matrix-operations">Matrix Operations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SupertropicalPy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">API Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading"></a></h1>
+<p>This section contains the complete API documentation for the SupertropicalPy package.</p>
+<section id="core-classes">
+<h2>Core Classes<a class="headerlink" href="#core-classes" title="Link to this heading"></a></h2>
+<section id="supertropicalelement">
+<h3>SupertropicalElement<a class="headerlink" href="#supertropicalelement" title="Link to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="supertropical.SupertropicalElement">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">supertropical.</span></span><span class="sig-name descname"><span class="pre">SupertropicalElement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_ghost</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/supertropical/element.html#SupertropicalElement"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#supertropical.SupertropicalElement" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Represents a single element in supertropical algebra,
+which can be either tangible or ghost.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>is_ghost</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="supertropical.SupertropicalElement.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_ghost</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/supertropical/element.html#SupertropicalElement.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#supertropical.SupertropicalElement.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initializes the element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – The numerical value of the element (e.g., 5.0).</p></li>
+<li><p><strong>is_ghost</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>) – True if this element is a ghost (e.g., 5.0ν).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="supertropical.SupertropicalElement.__add__">
+<span class="sig-name descname"><span class="pre">__add__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/supertropical/element.html#SupertropicalElement.__add__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#supertropical.SupertropicalElement.__add__" title="Link to this definition"></a></dt>
+<dd><p>Performs supertropical addition (oplus, $oplus$).</p>
+<p>Rules:
+1. a + b = max(a, b)
+2. a + a = aν (becomes ghost)
+3. a + aν = aν
+4. aν + aν = aν</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="supertropical.SupertropicalElement.__mul__">
+<span class="sig-name descname"><span class="pre">__mul__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/supertropical/element.html#SupertropicalElement.__mul__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#supertropical.SupertropicalElement.__mul__" title="Link to this definition"></a></dt>
+<dd><p>Performs supertropical multiplication (odot, $odot$).</p>
+<p>Rules:
+1. a * b = a + b (classical addition)
+2. a * bν = (a + b)ν
+3. aν * bν = (a + b)ν</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="supertropical.SupertropicalElement.__repr__">
+<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/supertropical/element.html#SupertropicalElement.__repr__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#supertropical.SupertropicalElement.__repr__" title="Link to this definition"></a></dt>
+<dd><p>Formal representation for debugging.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="supertropical.SupertropicalElement.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/supertropical/element.html#SupertropicalElement.__str__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#supertropical.SupertropicalElement.__str__" title="Link to this definition"></a></dt>
+<dd><p>Readable string representation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="supertropical.SupertropicalElement.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/supertropical/element.html#SupertropicalElement.__eq__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#supertropical.SupertropicalElement.__eq__" title="Link to this definition"></a></dt>
+<dd><p>Equality check: a == b.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="supertropical.SupertropicalElement.__lt__">
+<span class="sig-name descname"><span class="pre">__lt__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/supertropical/element.html#SupertropicalElement.__lt__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#supertropical.SupertropicalElement.__lt__" title="Link to this definition"></a></dt>
+<dd><p>Less than check: a &lt; b.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="supertropical.SupertropicalElement.is_tangible">
+<span class="sig-name descname"><span class="pre">is_tangible</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/supertropical/element.html#SupertropicalElement.is_tangible"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#supertropical.SupertropicalElement.is_tangible" title="Link to this definition"></a></dt>
+<dd><p>Returns True if this element is tangible.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="supertropical.SupertropicalElement.ghost_surpasses">
+<span class="sig-name descname"><span class="pre">ghost_surpasses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/supertropical/element.html#SupertropicalElement.ghost_surpasses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#supertropical.SupertropicalElement.ghost_surpasses" title="Link to this definition"></a></dt>
+<dd><p>Ghost surpasses relation (⊨).</p>
+<p>Definition: x ⊨ y if x = y ⊕ z for some z ∈ G_0 (ghost element).</p>
+<p>In practice: x ⊨ y when x and y have the same value and x is ghost.
+This means x “ghost surpasses” y.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> – Another SupertropicalElement</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if self ghost-surpasses other</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="supertropicalmatrix">
+<h3>SupertropicalMatrix<a class="headerlink" href="#supertropicalmatrix" title="Link to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="supertropical.SupertropicalMatrix">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">supertropical.</span></span><span class="sig-name descname"><span class="pre">SupertropicalMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/supertropical/matrix.html#SupertropicalMatrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#supertropical.SupertropicalMatrix" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Represents a matrix over the supertropical algebra.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="supertropical.SupertropicalMatrix.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/supertropical/matrix.html#SupertropicalMatrix.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#supertropical.SupertropicalMatrix.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initializes from a list of lists or a numpy array.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="supertropical.SupertropicalMatrix.__repr__">
+<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/supertropical/matrix.html#SupertropicalMatrix.__repr__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#supertropical.SupertropicalMatrix.__repr__" title="Link to this definition"></a></dt>
+<dd><p>String representation showing matrix in readable 2D array format.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="supertropical.SupertropicalMatrix.__getitem__">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/supertropical/matrix.html#SupertropicalMatrix.__getitem__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#supertropical.SupertropicalMatrix.__getitem__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="supertropical.SupertropicalMatrix.__mul__">
+<span class="sig-name descname"><span class="pre">__mul__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/supertropical/matrix.html#SupertropicalMatrix.__mul__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#supertropical.SupertropicalMatrix.__mul__" title="Link to this definition"></a></dt>
+<dd><p>Matrix multiplication or scalar multiplication.</p>
+<ul class="simple">
+<li><p>If other is SupertropicalMatrix: performs supertropical matrix multiplication
+C_ij = ⊕_k (A_ik ⊙ B_kj)</p></li>
+<li><p>If other is scalar (SupertropicalElement, int, float): multiplies each element</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="supertropical.SupertropicalMatrix.get_minor">
+<span class="sig-name descname"><span class="pre">get_minor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">j</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/supertropical/matrix.html#SupertropicalMatrix.get_minor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#supertropical.SupertropicalMatrix.get_minor" title="Link to this definition"></a></dt>
+<dd><p>Returns the minor matrix by removing row i and column j.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Row index to remove.</p></li>
+<li><p><strong>j</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Column index to remove.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The (n-1)x(n-1) minor matrix.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#supertropical.SupertropicalMatrix" title="supertropical.SupertropicalMatrix">SupertropicalMatrix</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="supertropical.SupertropicalMatrix.permanent">
+<span class="sig-name descname"><span class="pre">permanent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/supertropical/matrix.html#SupertropicalMatrix.permanent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#supertropical.SupertropicalMatrix.permanent" title="Link to this definition"></a></dt>
+<dd><p>Calculates the supertropical permanent of the matrix.</p>
+<p>The permanent is defined as:
+per(A) = $oplus_{pi in S_n} odot_{i=1}^n a_{i, pi(i)}$</p>
+<p>This is used as the supertropical equivalent of the determinant. [5, 19]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The permanent of the matrix.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#supertropical.SupertropicalElement" title="supertropical.SupertropicalElement">SupertropicalElement</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="supertropical.SupertropicalMatrix.adjoint">
+<span class="sig-name descname"><span class="pre">adjoint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/supertropical/matrix.html#SupertropicalMatrix.adjoint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#supertropical.SupertropicalMatrix.adjoint" title="Link to this definition"></a></dt>
+<dd><p>Calculates the supertropical adjoint matrix.</p>
+<p>The adjoint is the transpose of the cofactor matrix.
+The (i, j)-th entry of the adjoint is the (j, i)-th cofactor.
+The (j, i)-th cofactor is the permanent of the minor M_ji. [5, 11]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The adjoint matrix of self.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#supertropical.SupertropicalMatrix" title="supertropical.SupertropicalMatrix">SupertropicalMatrix</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="supertropical.SupertropicalMatrix.solve">
+<span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/supertropical/matrix.html#SupertropicalMatrix.solve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#supertropical.SupertropicalMatrix.solve" title="Link to this definition"></a></dt>
+<dd><p>Solves the supertropical linear system A * x = b using
+a version of Cramer’s Rule.</p>
+<p>The solution is calculated using the adjoint matrix:
+x = adj(A) * b * (per(A))^{-1}</p>
+<p>This provides the unique maximal tangible solution to the
+system $Ax mid_{gs}= b$.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>b</strong> (<a class="reference internal" href="#supertropical.SupertropicalMatrix" title="supertropical.SupertropicalMatrix"><em>SupertropicalMatrix</em></a>) – The (n, 1) vector on the
+right-hand side.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The (n, 1) solution vector x.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#supertropical.SupertropicalMatrix" title="supertropical.SupertropicalMatrix">SupertropicalMatrix</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If the matrix is singular (permanent is ghost)
+    or dimensions are incorrect.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="supertropical.SupertropicalMatrix.transpose">
+<span class="sig-name descname"><span class="pre">transpose</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/supertropical/matrix.html#SupertropicalMatrix.transpose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#supertropical.SupertropicalMatrix.transpose" title="Link to this definition"></a></dt>
+<dd><p>Returns the transpose of the matrix A^T.</p>
+<p>For matrix A, transpose A^T is defined as [A^T]_ij = A_ji.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The transposed matrix</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#supertropical.SupertropicalMatrix" title="supertropical.SupertropicalMatrix">SupertropicalMatrix</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="supertropical.SupertropicalMatrix.identity">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">identity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/supertropical/matrix.html#SupertropicalMatrix.identity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#supertropical.SupertropicalMatrix.identity" title="Link to this definition"></a></dt>
+<dd><p>Creates an n×n identity matrix I.</p>
+<p>Identity matrix is defined as:
+[I]_ij = { 0   if i = j</p>
+<blockquote>
+<div><p>{ ε   if i ≠ j</p>
+</div></blockquote>
+<p>where ε = -∞ (represented as ghost element with value -inf).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Size of the square identity matrix</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>n×n identity matrix</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#supertropical.SupertropicalMatrix" title="supertropical.SupertropicalMatrix">SupertropicalMatrix</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="supertropical.SupertropicalMatrix.pseudo_zero">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pseudo_zero</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/supertropical/matrix.html#SupertropicalMatrix.pseudo_zero"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#supertropical.SupertropicalMatrix.pseudo_zero" title="Link to this definition"></a></dt>
+<dd><p>Creates an n×n pseudo-zero matrix Z_G.</p>
+<p>Pseudo-zero matrix is defined as:
+[Z_G]_ij = { ε        if i = j</p>
+<blockquote>
+<div><p>{ ε or aν  if i ≠ j</p>
+</div></blockquote>
+<p>where ε = -∞ and aν ∈ G_0 (any ghost element).</p>
+<p>For simplicity, we use ε = -∞ as ghost for all entries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Size of the square pseudo-zero matrix</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>n×n pseudo-zero matrix</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#supertropical.SupertropicalMatrix" title="supertropical.SupertropicalMatrix">SupertropicalMatrix</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="supertropical.SupertropicalMatrix.pseudo_inverse">
+<span class="sig-name descname"><span class="pre">pseudo_inverse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/supertropical/matrix.html#SupertropicalMatrix.pseudo_inverse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#supertropical.SupertropicalMatrix.pseudo_inverse" title="Link to this definition"></a></dt>
+<dd><p>Calculates the pseudo-inverse A^♯ of the matrix.</p>
+<p>Pseudo-inverse is defined as:
+- If <a href="#id1"><span class="problematic" id="id2">|A|</span></a> ∈ T: A^♯ = (1_R / <a href="#id3"><span class="problematic" id="id4">|A|</span></a>) ⊗ adj(A)
+- If <a href="#id5"><span class="problematic" id="id6">|A|</span></a> ∈ G_0 with <a href="#id7"><span class="problematic" id="id8">|A|</span></a> ≠ ε: A^♯ = (1_R / <a href="#id9"><span class="problematic" id="id10">|A|</span></a>)^ν ⊗ adj(A)</p>
+<p>where 1_R is the multiplicative identity and <a href="#id11"><span class="problematic" id="id12">|A|</span></a> is the permanent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The pseudo-inverse matrix</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#supertropical.SupertropicalMatrix" title="supertropical.SupertropicalMatrix">SupertropicalMatrix</a></p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If matrix is not square or permanent is epsilon</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+<section id="quick-reference">
+<h2>Quick Reference<a class="headerlink" href="#quick-reference" title="Link to this heading"></a></h2>
+<section id="element-operations">
+<h3>Element Operations<a class="headerlink" href="#element-operations" title="Link to this heading"></a></h3>
+<p>Creating Elements:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">supertropical</span><span class="w"> </span><span class="kn">import</span> <span class="n">SupertropicalElement</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">SupertropicalElement</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>           <span class="c1"># Tangible: 5.0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">SupertropicalElement</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>     <span class="c1"># Ghost: 3.0ν</span>
+<span class="n">zero</span> <span class="o">=</span> <span class="n">SupertropicalElement</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;-inf&#39;</span><span class="p">))</span>  <span class="c1"># Zero element</span>
+</pre></div>
+</div>
+<p>Arithmetic:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>   <span class="c1"># Supertropical addition (⊕)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>   <span class="c1"># Supertropical multiplication (⊙)</span>
+
+<span class="c1"># Also works with Python numbers</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">7</span>   <span class="c1"># Automatically converts 7 to SupertropicalElement</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">a</span>   <span class="c1"># Right multiplication</span>
+</pre></div>
+</div>
+<p>Comparison:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span>      <span class="c1"># Equality check</span>
+<span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span>       <span class="c1"># Less than (by value, then tangible &lt; ghost)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">is_tangible</span><span class="p">()</span>  <span class="c1"># Check if tangible</span>
+<span class="n">a</span><span class="o">.</span><span class="n">is_ghost</span>  <span class="c1"># Check if ghost (attribute)</span>
+</pre></div>
+</div>
+</section>
+<section id="matrix-operations">
+<h3>Matrix Operations<a class="headerlink" href="#matrix-operations" title="Link to this heading"></a></h3>
+<p>Creating Matrices:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">supertropical</span><span class="w"> </span><span class="kn">import</span> <span class="n">SupertropicalMatrix</span>
+
+<span class="c1"># From list of lists</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">SupertropicalMatrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+
+<span class="c1"># From SupertropicalElement objects</span>
+<span class="n">e1</span> <span class="o">=</span> <span class="n">SupertropicalElement</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">e2</span> <span class="o">=</span> <span class="n">SupertropicalElement</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">SupertropicalMatrix</span><span class="p">([[</span><span class="n">e1</span><span class="p">,</span> <span class="n">e2</span><span class="p">],</span> <span class="p">[</span><span class="n">e2</span><span class="p">,</span> <span class="n">e1</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>Matrix Arithmetic:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">C</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">B</span>              <span class="c1"># Matrix multiplication</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">scalar</span>         <span class="c1"># Scalar multiplication (same operator!)</span>
+
+<span class="n">perm</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">permanent</span><span class="p">()</span>   <span class="c1"># Permanent (supertropical determinant)</span>
+<span class="n">adj</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()</span>      <span class="c1"># Adjoint matrix</span>
+</pre></div>
+</div>
+<p>Solving Linear Systems:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solve Ax = b</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">SupertropicalMatrix</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">SupertropicalMatrix</span><span class="p">([[</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">]])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Solution: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Advanced Operations:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get matrix minor (remove row i, column j)</span>
+<span class="n">minor</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">get_minor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Access elements</span>
+<span class="n">element</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># Get element at row 0, col 1</span>
+
+<span class="c1"># Matrix properties</span>
+<span class="n">shape</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span>    <span class="c1"># Get dimensions (rows, cols)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "KlinikAA/supertropicalpy",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./api"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../examples/04_linear_systems.html" class="btn btn-neutral float-left" title="4. Linear Systems over Supertropical Algebra" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Supertropical Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
